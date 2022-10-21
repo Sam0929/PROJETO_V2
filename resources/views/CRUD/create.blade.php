@@ -19,7 +19,8 @@
     
     </header>
 </div>
-       <!--Conteúdo-->
+
+<!--Conteúdo-->
 <div class='container'>
     <div class='row justify-content-center'>
         <div class='col-md-8'>
@@ -52,7 +53,7 @@
 					                        <option value="{{ $movie['nome'] }}">{{ $movie['nome'] }}</option>
 					                        @endforeach
 					                       
-				                        </select>                    
+				                    </select>                    
                                 </div>
                                 
                                  <button type='submit' class='btn btn-primary'>Atualizar</button>
