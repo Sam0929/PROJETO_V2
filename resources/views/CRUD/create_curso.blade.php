@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Cadastro de Novos Professores')
+@section('title','Cadastro de Novos Cursos')
 
 @section('content')
 

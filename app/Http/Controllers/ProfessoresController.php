@@ -36,7 +36,7 @@ class ProfessoresController extends Controller
     public function edit ($id) {
         $Professores = Profe::findOrFail($id);
 
-        return view('CRUD.create_prof',['Professores' => $Professor]);
+        return view('CRUD.create_prof',['Profe' => $Professores]);
 }
     public function update($id, Request $request){
         

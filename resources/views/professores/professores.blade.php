@@ -15,6 +15,7 @@
                 <li class="nav-item"><a href="/" class="nav-link" >Home</a></li>
                 <li class="nav-item"><a href="/alunos" class="nav-link" aria-current="page">Tabela de Alunos</a></li>
                 <li class="nav-item"><a href="/professores" class="nav-link active" aria-current="page">Tabela de Professores</a></li>
+                <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
             </ul>
     
     </header>
@@ -55,7 +56,7 @@
                                     <td class="text-break">{{ $P->Endereço}}</td>
                                     <td class="text-break">{{ $P->Usuário}}</td>
                                     <td class="text-break">{{ $P->Senha}}</td>
-                                    <td class="text-center"> <a class="btn btn-primary" href="Professores/{{$P->id}}/edit" role="button">Editar</button></td>
+                                    <td class="text-center"> <a class="btn btn-primary" href="professores/{{$P->id}}/edit" role="button">Editar</button></td>
                                     <td class="text-center">
                                           <form action="/professores/delete/{{ $P->id }}" method="post">
                                           @csrf
