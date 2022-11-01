@@ -15,6 +15,7 @@
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
                 <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
+                <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
             </ul>
     
     </header>

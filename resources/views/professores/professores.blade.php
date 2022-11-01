@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Alunos Matriculados')
+@section('title','Professores Matriculados')
 
 @section('content')
 <!--Cabeçalho-->
@@ -13,8 +13,8 @@
 
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/" class="nav-link" >Home</a></li>
-                <li class="nav-item"><a href="/alunos" class="nav-link active" aria-current="page">Tabela de Alunos</a></li>
-                <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
+                <li class="nav-item"><a href="/alunos" class="nav-link" aria-current="page">Tabela de Alunos</a></li>
+                <li class="nav-item"><a href="/professores" class="nav-link active" aria-current="page">Tabela de Professores</a></li>
             </ul>
     
     </header>
@@ -24,12 +24,12 @@
     <div class='row justify-content-center'>
         <div class='col-md-12'>
             <div class='card'>
-                <div class="card-header"><a class="btn btn-primary" href="{{url('alunos/novo')}}" role="button"> Novo aluno</a> </div>
+                <div class="card-header"><a class="btn btn-primary" href="{{url('professores/novo')}}" role="button"> Novo Professor</a> </div>
                     <div class='card-body'>
                
                 
             
-                      <h1 class="text-center">Tabela de alunos</h1>
+                      <h1 class="text-center">Tabela de Professores</h1>
                           
                         <table class="table table-striped table-hover table-bordered ">
                             <thead>
@@ -38,7 +38,8 @@
                                   <th scope="col">Nome</th>
                                   <th scope="col">CPF</th>
                                   <th scope="col">Endereço</th>
-                                  <th scope="col">Filme</th>
+                                  <th scope="col">Usuário</th>
+                                  <th scope="col">Senha</th>
                                   <th scope="col">Editar</th>
                                   <th scope="col">Deletar</th>
                                 </tr>
@@ -46,16 +47,17 @@
                             
                             <tbody>
                               
-                              @foreach($Alunos as $A)
+                              @foreach($Professores as $P)
                                   <tr>
-                                    <td class="fw-bold">{{ $A->id }}</td>
-                                    <td class="text-break">{{ $A->Nome }}</td>
-                                    <td class="text-break">{{ $A->CPF}}</td>
-                                    <td class="text-break">{{ $A->Endereço}}</td>
-                                    <td class="text-break">{{ $A->Filme }}</td>
-                                    <td class="text-center"> <a class="btn btn-primary" href="alunos/{{$A->id}}/edit" role="button">Editar</button></td>
+                                    <td class="fw-bold">{{ $P->id }}</td>
+                                    <td class="text-break">{{ $P->Nome }}</td>
+                                    <td class="text-break">{{ $P->CPF}}</td>
+                                    <td class="text-break">{{ $P->Endereço}}</td>
+                                    <td class="text-break">{{ $P->Usuário}}</td>
+                                    <td class="text-break">{{ $P->Senha}}</td>
+                                    <td class="text-center"> <a class="btn btn-primary" href="Professores/{{$P->id}}/edit" role="button">Editar</button></td>
                                     <td class="text-center">
-                                          <form action="alunos/delete/{{ $A->id }}" method="post">
+                                          <form action="Professores/delete/{{ $P->id }}" method="post">
                                           @csrf
                                           @method('delete')
                                           <button class="btn btn-danger">Deletar</button>

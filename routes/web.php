@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\AlunosController;
+use App\Http\Controllers\ProfessoresController;
 
 use App\Http\Controllers\ApiController;
 
@@ -27,8 +28,9 @@ Route::get('alunos/{id}/edit', [AlunosController::class,'edit']);
 Route::post('alunos/update/{id}', [AlunosController::class,'update']);
 Route::delete('alunos/delete/{id}', [AlunosController::class,'delete']);
 
-
-
+Route::get('/professores', [ProfessoresController::class,'index']);
+Route::get('/professores/novo', [ProfessoresController::class,'new']);
+Route::post('/professores/add', [ProfessoresController::class,'add']);
 
 
 
