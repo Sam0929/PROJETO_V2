@@ -15,7 +15,7 @@ class ProfessoresController extends Controller
 }
     public function new(){
 
-    return view ('CRUD.create');
+    return view ('CRUD.create_prof');
 
     }
 
@@ -27,6 +27,23 @@ class ProfessoresController extends Controller
         return redirect::to('professores');
     }
 
+    public function delete($id){
+        $Professores = Profe::findOrFail ($id);
+        $Professores -> delete();
+        return redirect::to('professores');
+    }
 
+    public function edit ($id) {
+        $Professores = Profe::findOrFail($id);
+
+        return view('CRUD.create_prof',['Professores' => $Professor]);
+}
+    public function update($id, Request $request){
+        
+    $Professores = Profe::findOrFail ($id);
+    $Professores -> update ($request -> all());
+    
+    return redirect::to('professores');
+}
 
 }

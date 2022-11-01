@@ -61,32 +61,6 @@
                             </form>
         
                         @else
-                                                @if( Request::is('professores/novo'))
-                                             <form action= "{{ url('professores/add')}}" method="POST">
-                                            @csrf
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                                                    <input type="text" name="Nome" class="form-control"  placeholder="Nome..">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">CPF</label>
-                                                    <input type="text" name="CPF" class="form-control"  placeholder="CPF..">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Endereço</label>
-                                                    <input type="text" name="Endereço" class="form-control"  placeholder="Endereço..">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Usuário</label>
-                                                    <input type="text" name="Usuário" class="form-control"  placeholder="Usuário..">               
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Senha</label>
-                                                    <input type="text" name="Senha" class="form-control"  placeholder="Senha..">               
-                                                </div>
-                                                    <button type='submit' class='btn btn-primary'>Salvar</button>
-                                            </form>
-                        @else
                             <form action= "{{ url('alunos/add')}}" method="POST">
                         
                         @csrf
@@ -115,7 +89,8 @@
                                     <button type='submit' class='btn btn-primary'>Salvar</button>
                             </form>
                             @endif
-                        @endif
+                       
+                    
                     </div>
             </div>
         </div>

@@ -57,7 +57,7 @@
                                     <td class="text-break">{{ $P->Senha}}</td>
                                     <td class="text-center"> <a class="btn btn-primary" href="Professores/{{$P->id}}/edit" role="button">Editar</button></td>
                                     <td class="text-center">
-                                          <form action="Professores/delete/{{ $P->id }}" method="post">
+                                          <form action="/professores/delete/{{ $P->id }}" method="post">
                                           @csrf
                                           @method('delete')
                                           <button class="btn btn-danger">Deletar</button>

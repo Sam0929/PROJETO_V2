@@ -31,6 +31,9 @@ Route::delete('alunos/delete/{id}', [AlunosController::class,'delete']);
 Route::get('/professores', [ProfessoresController::class,'index']);
 Route::get('/professores/novo', [ProfessoresController::class,'new']);
 Route::post('/professores/add', [ProfessoresController::class,'add']);
+Route::get('professores/{id}/edit', [ProfessoresController::class,'edit']);
+Route::post('professores/update/{id}', [ProfessoresController::class,'update']);
+Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete']);
 
 
 
