@@ -102,5 +102,7 @@ class AlunosController extends Controller
       "ddd": "11",
       "siafi": "7107"
     });
-
+     Avatar::create($request->Nome)(storage_path(path: 'app/public/avatar-'. $Aluno->id . '.png'));
+    get https://ui-avatars.com/api/?background=random
+    //testar depois quase certeza que nao esta funcionando
 }
