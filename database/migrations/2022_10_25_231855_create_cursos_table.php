@@ -18,6 +18,11 @@ return new class extends Migration
             $table->timestamps();
             $table->string("Nome");
             $table->string("Tipo");
+            $table->string("Resumo");
+            $table->text("Descrição");
+            $table->integer("Max");
+            $table->integer("Min");
+            $table->string("Status");
         });
     }
 

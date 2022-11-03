@@ -11,6 +11,6 @@ class Profe extends Model
 protected $fillable = ['Nome','CPF','Endereço','Usuário','Senha'];
 
 
-protected $table = 'Profe';
+protected $table = 'profe';
         
 }

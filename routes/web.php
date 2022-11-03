@@ -37,6 +37,9 @@ Route::post('professores/update/{id}', [ProfessoresController::class,'update']);
 Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete']);
 
 Route::get('/cursos', [CursosController::class, 'index']);
-
-
+Route::get('/cursos/novo', [CursosController::class,'new']);
+Route::post('/cursos/add', [CursosController::class,'add']);
+Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']);
+Route::post('/cursos/update/{id}', [CursosController::class,'update']);
+Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']);
 
