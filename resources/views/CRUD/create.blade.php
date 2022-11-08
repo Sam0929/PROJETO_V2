@@ -15,6 +15,8 @@
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/" class="nav-link" >Home</a></li>
                 <li class="nav-item"><a href="/alunos" class="nav-link">Tabela de Alunos</a></li>
+                <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
+                <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
             </ul>
     
     </header>
@@ -37,12 +39,12 @@
                                     <input type="text" name="Nome" class="form-control"  placeholder="Nome.." value ="{{ $Aluno-> Nome}}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Matéria</label>
-                                    <input type="text" name="Matéria" class="form-control"  placeholder="Matéria.." value ="{{ $Aluno-> Matéria}}">
+                                    <label for="exampleFormControlInput1" class="form-label">CPF</label>
+                                    <input type="text" name="CPF" class="form-control"  placeholder="CPF.." value ="{{ $Aluno-> CPF}}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Professor</label>
-                                    <input type="text" name="Professor" class="form-control"  placeholder="Professor.." value ="{{ $Aluno-> Professor}}">
+                                    <label for="exampleFormControlInput1" class="form-label">Endereço</label>
+                                    <input type="text" name="Endereço" class="form-control"  placeholder="Endereço.." value ="{{ $Aluno-> Endereço}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Filme</label>
@@ -60,20 +62,20 @@
                             </form>
         
                         @else
-        
                             <form action= "{{ url('alunos/add')}}" method="POST">
+                        
                         @csrf
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Nome</label>
                                     <input type="text" name="Nome" class="form-control"  placeholder="Nome..">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Matéria</label>
-                                    <input type="text" name="Matéria" class="form-control"  placeholder="Matéria..">
+                                    <label for="exampleFormControlInput1" class="form-label">CPF</label>
+                                    <input type="text" name="CPF" class="form-control"  placeholder="CPF..">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Professor</label>
-                                    <input type="text" name="Professor" class="form-control"  placeholder="Professor..">
+                                    <label for="exampleFormControlInput1" class="form-label">Endereço</label>
+                                    <input type="text" name="Endereço" class="form-control"  placeholder="Endereço..">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Filme</label>
@@ -87,7 +89,9 @@
                                 </div>
                                     <button type='submit' class='btn btn-primary'>Salvar</button>
                             </form>
-                        @endif
+                            @endif
+                       
+                    
                     </div>
             </div>
         </div>
