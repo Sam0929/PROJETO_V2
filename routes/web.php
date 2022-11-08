@@ -43,3 +43,7 @@ Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']);
 Route::post('/cursos/update/{id}', [CursosController::class,'update']);
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
