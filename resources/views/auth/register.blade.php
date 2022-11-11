@@ -40,6 +40,30 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="CPF" class="col-md-4 col-form-label text-md-end">{{ __('CPF') }}</label>
+                            <div class="col-md-6">                                                                 <!-- INSERIR NAS CONTROLLERS -->
+                            <input type="text" name="CPF" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                                    <label for="Endereço" class="col-md-4 col-form-label text-md-end">{{ __('Endereço') }}</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="Endereço" class="form-control">                               <!-- INSERIR NAS CONTROLLERS -->
+                                </div>
+                        </div>
+                        <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Filme</label>
+                                    <select class="form-select" name="Filme" aria-label="Default select example">
+                                            
+                                            @foreach($movies as $movie)                                                      <!-- INSERIR NAS CONTROLLERS -->
+					                        <option value="{{ $movie['nome'] }}">{{ $movie['nome'] }}</option>
+					                        @endforeach
+					                        
+				                    </select>                    
+                                </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
