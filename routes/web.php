@@ -23,11 +23,11 @@ use App\Http\Controllers\CursosController;
 Route::get('/', [AlunosController::class,'index01']);                                       // Home                    
 
 Route::get('/alunos', [AlunosController::class,'index']);
-Route::get('/alunos/novo', [AlunosController::class,'new']);
-Route::post('/alunos/add', [AlunosController::class,'add']);
-Route::get('alunos/{id}/edit', [AlunosController::class,'edit']);                           // Rotas para Alunos
+Route::get('/alunos/novo', [AlunosController::class,'new']) ->middleware('admin');           
+Route::post('/alunos/add', [AlunosController::class,'add']) ->middleware('admin');           
+Route::get('alunos/{id}/edit', [AlunosController::class,'edit'])  ->middleware('admin');                          // Rotas para Alunos
 Route::post('alunos/update/{id}', [AlunosController::class,'update']);
-Route::delete('alunos/delete/{id}', [AlunosController::class,'delete']);
+Route::delete('alunos/delete/{id}', [AlunosController::class,'delete']) ->middleware('admin');
 
 Route::get('/professores', [ProfessoresController::class,'index']);
 Route::get('/professores/novo', [ProfessoresController::class,'new']);
@@ -43,7 +43,7 @@ Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']);
 Route::post('/cursos/update/{id}', [CursosController::class,'update']);
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']);
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

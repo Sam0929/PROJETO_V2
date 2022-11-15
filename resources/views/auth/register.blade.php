@@ -1,101 +1,60 @@
-@extends('layouts.main')
+<x-guest-layout>
+    <x-jet-authentication-card>
+        <x-slot name="logo">
+            <x-jet-authentication-card-logo />
+        </x-slot>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+        <x-jet-validation-errors class="mb-4" />
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="CPF" class="col-md-4 col-form-label text-md-end">{{ __('CPF') }}</label>
-                            <div class="col-md-6">                                                                 <!-- INSERIR NAS CONTROLLERS -->
-                            <input type="text" name="CPF" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                                    <label for="Endereço" class="col-md-4 col-form-label text-md-end">{{ __('Endereço') }}</label>
-                                <div class="col-md-6">
-                                    <input type="text" name="Endereço" class="form-control">                               <!-- INSERIR NAS CONTROLLERS -->
-                                </div>
-                        </div>
-                        <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Filme</label>
-                                    <select class="form-select" name="Filme" aria-label="Default select example">
-                                            
-                                            @foreach($movies as $movie)                                                      <!-- INSERIR NAS CONTROLLERS -->
-					                        <option value="{{ $movie['nome'] }}">{{ $movie['nome'] }}</option>
-					                        @endforeach
-					                        
-				                    </select>                    
-                                </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <div>
+                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
-        </div>
-    </div>
-</div>
-@endsection
+
+            <div class="mt-4">
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                <div class="mt-4">
+                    <x-jet-label for="terms">
+                        <div class="flex items-center">
+                            <x-jet-checkbox name="terms" id="terms"/>
+
+                            <div class="ml-2">
+                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+                                ]) !!}
+                            </div>
+                        </div>
+                    </x-jet-label>
+                </div>
+            @endif
+
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-jet-button class="ml-4">
+                    {{ __('Register') }}
+                </x-jet-button>
+            </div>
+        </form>
+    </x-jet-authentication-card>
+</x-guest-layout>
