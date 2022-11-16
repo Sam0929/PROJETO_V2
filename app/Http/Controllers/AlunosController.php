@@ -28,7 +28,7 @@ class AlunosController extends Controller
             
             for($j=1; $j<7; $j++){
 
-            $api = Http::get('https://www.learn-laravel.cf/movies?page=' . $j);
+            $api = Http::withoutVerifying()->get('https://www.learn-laravel.cf/movies?page='. $j);
             $auxjson = json_decode($api, true);
             $api = $auxjson['data'];
 

@@ -5,20 +5,7 @@
 @section('content')
 
 <!--Cabeçalho-->
-<div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span class="fs-4">Banco de Alunos</span>
-      </a>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
-            </ul>
-    
-    </header>
-</div>
 
 <!--Conteúdo-->
 <div class='container text-center'>
@@ -36,6 +23,21 @@
     </div>
 </div>
     
+<div class='container'>
+    <div class='col-md-12'>
+        <div class='card'>
+            <div class='card-body'>
+                
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
+                <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
+                <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <div class='container'>
     <div class='col-md-12'>
         <div class='card'>
