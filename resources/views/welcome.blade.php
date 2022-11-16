@@ -22,7 +22,7 @@
         </div>
     </div>
 </div>
-    
+@auth    
 <div class='container'>
     <div class='col-md-12'>
         <div class='card'>
@@ -34,10 +34,12 @@
                 <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
                 <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
             </ul>
+            
             </div>
         </div>
     </div>
 </div>
+@endauth
 <div class='container'>
     <div class='col-md-12'>
         <div class='card'>
