@@ -18,9 +18,16 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 
-Route::get('/', [AlunosController::class,'index01']);                                       // Home                    
+
+
+Route::get('/', [AlunosController::class,'index01']);                                       // Home
+
+Route::get('/login', [UserController::class,'index']);                                    // Login
+Route::post('/auth', [UserController::class, 'auth'])->name('login');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/alunos', [AlunosController::class,'index']);
 Route::get('/alunos/novo', [AlunosController::class,'new']) ->middleware('admin');           
@@ -43,7 +50,4 @@ Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']) ->middleware(
 Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middleware('admin');
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
