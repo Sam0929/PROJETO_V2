@@ -30,18 +30,18 @@ Route::post('alunos/update/{id}', [AlunosController::class,'update'])->middlewar
 Route::delete('alunos/delete/{id}', [AlunosController::class,'delete'])->middleware('admin');
 
 Route::get('/professores', [ProfessoresController::class,'index']);
-Route::get('/professores/novo', [ProfessoresController::class,'new']);
-Route::post('/professores/add', [ProfessoresController::class,'add']);
-Route::get('professores/{id}/edit', [ProfessoresController::class,'edit']);
-Route::post('professores/update/{id}', [ProfessoresController::class,'update']);           // Rotas para Professores
-Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete']);
+Route::get('/professores/novo', [ProfessoresController::class,'new'])->middleware('admin');
+Route::post('/professores/add', [ProfessoresController::class,'add'])->middleware('admin');
+Route::get('professores/{id}/edit', [ProfessoresController::class,'edit'])->middleware('admin');
+Route::post('professores/update/{id}', [ProfessoresController::class,'update'])->middleware('admin');           // Rotas para Professores
+Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete'])->middleware('admin');
 
 Route::get('/cursos', [CursosController::class, 'index']);
-Route::get('/cursos/novo', [CursosController::class,'new']);
-Route::post('/cursos/add', [CursosController::class,'add']);
-Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']);
-Route::post('/cursos/update/{id}', [CursosController::class,'update']);
-Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']);
+Route::get('/cursos/novo', [CursosController::class,'new'])->middleware('admin');
+Route::post('/cursos/add', [CursosController::class,'add'])->middleware('admin');
+Route::get('/cursos/{id}/edit/', [CursosController::class,'edit'])->middleware('admin');
+Route::post('/cursos/update/{id}', [CursosController::class,'update'])->middleware('admin');
+Route::delete('/cursos/delete/{id}', [CursosController::class,'delete'])->middleware('admin');
 
 
 Auth::routes();
