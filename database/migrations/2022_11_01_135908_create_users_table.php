@@ -18,8 +18,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('email');
-            $table->boolean('admin')->nullable();
-            $table->boolean('client')->nullable();
             $table->string('password');
             $table->boolean('admin')->nullable();
             $table->boolean('client')->nullable();
