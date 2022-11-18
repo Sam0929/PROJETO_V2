@@ -21,6 +21,8 @@ return new class extends Migration
             $table->boolean('admin')->nullable();
             $table->boolean('client')->nullable();
             $table->string('password');
+            $table->boolean('admin')->nullable();
+            $table->boolean('client')->nullable();
 
         });
     }
