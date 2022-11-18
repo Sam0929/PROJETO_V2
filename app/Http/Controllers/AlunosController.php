@@ -90,19 +90,3 @@ class AlunosController extends Controller
         $Aluno -> delete();
         return redirect::to('alunos');
     }
-    callback_name({
-      "cep": "01001-000",
-      "logradouro": "Praça da Sé",
-      "complemento": "lado ímpar",
-      "bairro": "Sé",
-      "localidade": "São Paulo",
-      "uf": "SP",
-      "ibge": "3550308",
-      "gia": "1004",
-      "ddd": "11",
-      "siafi": "7107"
-    });
-     Avatar::create($request->Nome)(storage_path(path: 'app/public/avatar-'. $Aluno->id . '.png'));
-    get https://ui-avatars.com/api/?background=random
-    //testar depois quase certeza que nao esta funcionando
-}
