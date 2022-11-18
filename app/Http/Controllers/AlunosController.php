@@ -90,3 +90,4 @@ class AlunosController extends Controller
         $Aluno -> delete();
         return redirect::to('alunos');
     }
+}
