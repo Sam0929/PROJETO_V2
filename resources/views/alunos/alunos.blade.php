@@ -51,6 +51,7 @@
                             <tbody>
                               
                               @foreach($Alunos as $A)
+                              
                                   <tr>
                                     <td class="fw-bold">{{ $A->id }}</td>
                                     <td class="text-break">{{ $A->Nome }}</td>
@@ -66,6 +67,7 @@
                                           </form>
                                     </td>
                                   </tr>
+                                  
                               @endforeach
                             </tbody>
                         </table>
