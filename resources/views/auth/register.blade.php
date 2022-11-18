@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{  }}">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -58,22 +58,6 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <label for="permission" class="col-md-4 col-form-label text-md-end">{{ __('Permissão') }}</label>
-                            <div class="col-md-6">
-                            <select class="form-select" name='admin' aria-label="Default select example">
-                                <option selected>Selecione a permissão do usuário</option>
-                                                    <option value="1">Administrador</option>
-                                                    <option value="0">Cliente</option>
-                            @error('admin')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ '$message' }}</strong>
-                                    </span>
-                            @enderror
-                            </select>
                             </div>
                         </div>
 
