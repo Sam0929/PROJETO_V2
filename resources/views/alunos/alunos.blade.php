@@ -25,10 +25,7 @@
     <div class='row justify-content-center'>
         <div class='col-md-12'>
             <div class='card'>
-              @if (Auth::check() && Auth::user()->admin == 1)
-              <div class="card-header"><a class="btn btn-primary" href="{{url('alunos/novo')}}" role="button"> Novo aluno</a> </div>
-              @endif
-            
+                <div class="card-header"><a class="btn btn-primary" href="{{url('alunos/novo')}}" role="button"> Novo aluno</a> </div>
                     <div class='card-body'>
                
                 
@@ -51,7 +48,6 @@
                             <tbody>
                               
                               @foreach($Alunos as $A)
-                              
                                   <tr>
                                     <td class="fw-bold">{{ $A->id }}</td>
                                     <td class="text-break">{{ $A->Nome}}</td>
@@ -67,7 +63,6 @@
                                           </form>
                                     </td>
                                   </tr>
-                                  
                               @endforeach
                             </tbody>
                         </table>

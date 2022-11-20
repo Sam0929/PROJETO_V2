@@ -19,9 +19,8 @@ class AlunosController extends Controller
     
     public function index(){
         $Alunos = Aluno::get();
-        $User = User::get();
 
-        return view ('alunos.alunos',['Alunos' => $Alunos],['User' => $User]);
+        return view ('alunos.alunos',['Alunos' => $Alunos]);
         
     }
 
@@ -49,19 +48,18 @@ class AlunosController extends Controller
 
     public function add (Request $request){
 
-        
+
         $data = $request->all();
         $data['password'] = \Hash::make($data['password']); // ou bcrypt($data['senha']);
         $User = User::create($data);
 
         $User->UserId()->create(['UserId' => 'Id']);
 
-        
+      
         $Aluno = new Aluno;
         $Aluno = $Aluno-> create($request -> all());
 
      
-        
         
         
         return redirect::to('alunos');
