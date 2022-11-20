@@ -50,7 +50,7 @@
                               @foreach($Alunos as $A)
                                   <tr>
                                     <td class="fw-bold">{{ $A->id }}</td>
-                                    <td class="text-break">{{ $A->Nome }}</td>
+                                    <td class="text-break">{{ $A->Nome}}</td>
                                     <td class="text-break">{{ $A->CPF}}</td>
                                     <td class="text-break">{{ $A->Endereço}}</td>
                                     <td class="text-break">{{ $A->Filme }}</td>

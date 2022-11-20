@@ -37,13 +37,8 @@ Route::post('professores/update/{id}', [ProfessoresController::class,'update'])-
 Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete'])->middleware('admin');
 
 Route::get('/cursos', [CursosController::class, 'index']);
-Route::get('/cursos/novo', [CursosController::class,'new'])->middleware('admin');
-Route::post('/cursos/add', [CursosController::class,'add'])->middleware('admin');
-Route::get('/cursos/{id}/edit/', [CursosController::class,'edit'])->middleware('admin');
-Route::post('/cursos/update/{id}', [CursosController::class,'update'])->middleware('admin');
-Route::delete('/cursos/delete/{id}', [CursosController::class,'delete'])->middleware('admin');
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/cursos/novo', [CursosController::class,'new']) ->middleware('admin');
+Route::post('/cursos/add', [CursosController::class,'add']) ->middleware('admin');
+Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']) ->middleware('admin');
+Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middleware('admin');
+Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
