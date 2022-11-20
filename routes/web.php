@@ -17,10 +17,14 @@ use App\Http\Controllers\AlunosController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\CursosController;
-
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', [AlunosController::class,'index01']);                                       // Home                    
+
+Route::get('/login', [UserController::class,'index']);                                    // Login
+Route::post('/auth', [UserController::class, 'auth'])->name('login');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/alunos', [AlunosController::class,'index']);
 Route::get('/alunos/novo', [AlunosController::class,'new'])->middleware('admin');
