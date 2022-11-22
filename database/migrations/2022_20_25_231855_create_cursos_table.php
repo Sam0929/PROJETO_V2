@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer("Max");
             $table->integer("Min");
             $table->string("Status");
+            $table->foreignid("user_id")->constrained();
         });
     }
 
@@ -34,5 +35,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('cursos');
+    
     }
 };

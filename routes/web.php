@@ -49,3 +49,6 @@ Route::post('/cursos/add', [CursosController::class,'add']) ->middleware('admin'
 Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']) ->middleware('admin');
 Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middleware('admin');
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
+
+Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('admin');
+
