@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -52,3 +53,5 @@ Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middl
 
 Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('admin');
 
+=======
+>>>>>>> Desenvolvimento_L

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("Endereço");
             $table->string("Usuário");
             $table->string("Senha");
+            $table->string("Avatar")->nullable();
         });
     }
 
