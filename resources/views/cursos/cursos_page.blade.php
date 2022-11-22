@@ -49,7 +49,7 @@
                                   
                                   <th scope="col">Editar</th>
                                   <th scope="col">Deletar</th>
-                                  <th scope="col">NomedoAluno</th>
+                                  <th scope="col">Criador</th>
                                   <th scope="col">Matricular</th>
                                 </tr>
                             </thead>
@@ -66,7 +66,15 @@
                                     <td class="text-break">{{ $C->Max}}</td>
                                     <td class="text-break">{{ $C->Min}}</td>
                                     <td class='text-break'>{{ count($C->Users)}}</td>
-                                    <td class="text-break">{{ $C->Status}}</td>
+                                    @if (count($C->Users) == ($C->Max))
+                                    <td class="text-break">Matrículas Encerradas</td>
+                                    @else
+                                    @if (count($C->Users) >= ($C->Min))
+                                    <td class="text-break">Matrículas Abertas - Curso acontecerá!</td>
+                                    @else
+                                    <td class="text-break">Matrículas Abertas - Mínimo de alunos não atingido!</td>
+                                    @endif
+                                    @endif
                                     <td class="text-center"> <a class="btn btn-primary" href="cursos/{{$C->id}}/edit" role="button">Editar</button></td>
                                     <td class="text-center">
                                           <form action="/cursos/delete/{{ $C->id }}" method="POST">

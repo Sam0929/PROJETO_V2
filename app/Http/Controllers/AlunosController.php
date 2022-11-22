@@ -20,6 +20,7 @@ class AlunosController extends Controller
     public function index(){
         $Alunos = Aluno::get();
         $User = User::get();
+        
 
         return view ('alunos.alunos',['Alunos' => $Alunos],['User' => $User]);
         
@@ -55,6 +56,7 @@ class AlunosController extends Controller
         $User = User::create($data);
 
         $Aluno = new Aluno;
+        $Aluno->Nome = $User->name;
         $Aluno->CPF = $request->CPF;
         $Aluno->Endereço = $request->Endereço;
         $Aluno->Filme = $request->Filme;
