@@ -60,7 +60,6 @@ class AlunosController extends Controller
         $Aluno->CPF = $request->CPF;
         $Aluno->Endereço = $request->Endereço;
         $Aluno->Filme = $request->Filme;
-        $User->auth()->user();
         $Aluno->user_id = $User->id;
         $Aluno->save();
     

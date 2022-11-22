@@ -21,7 +21,7 @@ class CreateAlunosTable extends Migration
             $table->string("CPF");
             $table->string("Endereço");
             $table->string("Filme");
-            $table->foreignid("user_id")->constrained();
+            $table->foreignid("user_id")->constrained()->onDelete('cascade');           //FOREIGN KEY
         });
     }
 
