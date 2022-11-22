@@ -1,4 +1,3 @@
-<<<<<<< HEAD:database/migrations/2022_20_30_171720_create_alunos_table.php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -35,5 +34,5 @@ class CreateAlunosTable extends Migration
         Schema::dropIfExists('alunos');
     }
 };
-=======
->>>>>>> Desenvolvimento_L:database/migrations/2022_10_10_171720_create_alunos_table.php
+
+
