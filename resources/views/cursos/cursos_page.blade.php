@@ -44,9 +44,13 @@
                                   <th scope="col">Descrição</th>
                                   <th scope="col">Max</th>
                                   <th scope="col">Min</th>
+                                  <th scope="col">Participantes</th>
                                   <th scope="col">Status</th>
+                                  
                                   <th scope="col">Editar</th>
                                   <th scope="col">Deletar</th>
+                                  <th scope="col">NomedoAluno</th>
+                                  <th scope="col">Matricular</th>
                                 </tr>
                             </thead>
                             
@@ -61,15 +65,22 @@
                                     <td class="text-break">{{ $C->Descrição}}</td>
                                     <td class="text-break">{{ $C->Max}}</td>
                                     <td class="text-break">{{ $C->Min}}</td>
+                                    <td class='text-break'>{{ count($C->Users)}}</td>
                                     <td class="text-break">{{ $C->Status}}</td>
                                     <td class="text-center"> <a class="btn btn-primary" href="cursos/{{$C->id}}/edit" role="button">Editar</button></td>
                                     <td class="text-center">
-                                          <form action="/cursos/delete/{{ $C->id }}" method="post">
+                                          <form action="/cursos/delete/{{ $C->id }}" method="POST">
                                           @csrf
                                           @method('delete')
                                           <button class="btn btn-danger">Deletar</button>
                                           </form>
                                     </td>
+                                    <td class="text-break">{{ $C->user->name}}</td>
+                                    <form action="/cursos/{{ $C->id }}/join" method="POST">
+                                      @csrf
+                                    <td class="text-center"> <a class="btn btn-primary" href="cursos/{{$C->id}}/join" onclick="curso.preventDefault();
+                                    this.closest('form').submit();">Matricular</td>
+                                    </form>
                                   </tr>
                               @endforeach
                             </tbody>

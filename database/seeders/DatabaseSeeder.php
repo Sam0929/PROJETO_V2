@@ -38,5 +38,17 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('1234qwer'),
             'admin' => '1',
         ]);
+        DB::table('cursos')->insert([
+            
+            'Nome' => "Cálculo integrado",
+            'Tipo' => 'Matematica',
+            'Resumo' =>'Cálculo A,B,C',
+            'Descrição' => '1',
+            'Max' => '100',
+            'Min' => '10',
+            'Status' => '1',
+            'user_id' => '2',
+        
+        ]);
     }
 }

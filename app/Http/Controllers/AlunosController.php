@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\User;
-use App\Models\UserId;
 use Redirect;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 use Nette\Utils\Json;
 class AlunosController extends Controller
 
@@ -54,11 +54,18 @@ class AlunosController extends Controller
         $data['password'] = \Hash::make($data['password']); // ou bcrypt($data['senha']);
         $User = User::create($data);
 
-        $User->UserId()->create(['UserId' => 'Id']);
+        $Aluno = new Aluno;
+        $Aluno->CPF = $request->CPF;
+        $Aluno->Endereço = $request->Endereço;
+        $Aluno->Filme = $request->Filme;
+        $User->auth()->user();
+        $Aluno->user_id = $User->id;
+        $Aluno->save();
+    
+        
 
         
-        $Aluno = new Aluno;
-        $Aluno = $Aluno-> create($request -> all());
+       
 
      
         
