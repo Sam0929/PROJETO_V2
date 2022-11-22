@@ -25,7 +25,9 @@
     <div class='row justify-content-center'>
         <div class='col-md-12'>
             <div class='card'>
-                <div class="card-header"><a class="btn btn-primary" href="{{url('cursos/novo')}}" role="button"> Novo Curso</a> </div>
+            @if (Auth::check() && Auth::user()->admin == 1)
+            <div class="card-header"><a class="btn btn-primary" href="{{url('cursos/novo')}}" role="button"> Novo Curso</a> </div>
+            @endif
                     <div class='card-body'>
                
                 
