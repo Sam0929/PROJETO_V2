@@ -27,7 +27,7 @@
             <div class='card'>
             @if (Auth::check() && Auth::user()->admin == 1)
             <div class="card-header"><a class="btn btn-primary" href="{{url('cursos/novo')}}" role="button"> Novo Curso</a> </div>
-            @endif
+          
                     <div class='card-body'>
                
                 
@@ -85,7 +85,24 @@
                               @endforeach
                             </tbody>
                         </table>
+                      
+                    </div>
+                </div>
                   </div>
+                  @else
+                  @foreach($Curso as $C)
+                  <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="/img/laravel01.jpg" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">{{ $C->Nome }}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+               </div>
+                </div>
+                 
+                @endforeach
+                  @endif
+                  
             </div>   
         </div>
     </div>
