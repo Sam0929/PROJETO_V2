@@ -51,7 +51,7 @@ public function uploadAvatar(Request $request){
     $request->image->storeAs('images', $filename, 'public');
     auth()->Profe()->update(['avatar => $filename']);
     }
-    return redirect()->back()
+    return redirect()->back();
 }
 
 }

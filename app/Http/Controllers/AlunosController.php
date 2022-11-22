@@ -112,6 +112,6 @@ class AlunosController extends Controller
         $request->image->storeAs('images', $filename, 'public');
         auth()->Alunos()->update(['avatar => $filename']);
         }
-        return redirect()->back()
+        return redirect()->back();
     }
 }
