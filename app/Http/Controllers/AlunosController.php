@@ -90,4 +90,13 @@ class AlunosController extends Controller
         $Aluno -> delete();
         return redirect::to('alunos');
     }
+
+    public function uploadAvatar(Request $request){
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+        $request->image->storeAs('images', $filename, 'public');
+        auth()->Alunos()->update(['avatar => $filename']);
+        }
+        return redirect()->back()
+    }
 }

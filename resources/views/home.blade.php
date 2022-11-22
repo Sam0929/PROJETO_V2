@@ -19,6 +19,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                        <form action="/upload" method="post"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="image" />
+                            <input type="submit" value="Upload" />
+                        </form> 
                 </div>
             </div>
         </div>
