@@ -19,6 +19,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                        
                         <form action="/upload" method="post"
                             enctype="multipart/form-data">
                             @csrf

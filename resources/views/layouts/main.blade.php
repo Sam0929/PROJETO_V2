@@ -71,7 +71,9 @@
                 </div>
             </div>
         </nav>
-
+        
+        <img src="{{asset('/storage/images/'.auth::user()->avatar)}}" alt="avatar" width="80" />
+        
         <main class="py-4">
             @yield('content')
         </main>
