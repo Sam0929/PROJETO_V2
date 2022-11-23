@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -52,6 +51,3 @@ Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middlew
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
 
 Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('admin');
-
-=======
->>>>>>> Desenvolvimento_L
