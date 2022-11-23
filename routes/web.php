@@ -26,8 +26,9 @@ use App\Http\Controllers\UserController;
 Route::get('/', [AlunosController::class,'index01']);                                       // Home
 
 Route::get('/login', [UserController::class,'index']);                                    // Login
-Route::post('/auth', [UserController::class, 'auth'])->name('login');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/auth', [UserController::class, 'auth']);
+Route::get('/logout', [UserController::class, 'logout']);
+Route::get('/userinfo', [UserController::class, 'userinfo']);
 
 Route::get('/alunos', [AlunosController::class,'index']);
 Route::get('/alunos/novo', [AlunosController::class,'new']) ->middleware('admin');           
