@@ -27,7 +27,7 @@
             <div class='card'>
             @if (Auth::check() && Auth::user()->admin == 1)
             <div class="card-header"><a class="btn btn-primary" href="{{url('cursos/novo')}}" role="button"> Novo Curso</a> </div>
-          
+
                     <div class='card-body'>
                
                 
@@ -49,7 +49,7 @@
                                   
                                   <th scope="col">Editar</th>
                                   <th scope="col">Deletar</th>
-                                  <th scope="col">NomedoAluno</th>
+                                  <th scope="col">Criador</th>
                                   <th scope="col">Matricular</th>
                                 </tr>
                             </thead>
@@ -66,7 +66,15 @@
                                     <td class="text-break">{{ $C->Max}}</td>
                                     <td class="text-break">{{ $C->Min}}</td>
                                     <td class='text-break'>{{ count($C->Users)}}</td>
-                                    <td class="text-break">{{ $C->Status}}</td>
+                                    @if (count($C->Users) == ($C->Max))
+                                    <td class="text-break">Matrículas Encerradas</td>
+                                    @else
+                                    @if (count($C->Users) >= ($C->Min))
+                                    <td class="text-break">Matrículas Abertas - Curso acontecerá!</td>
+                                    @else
+                                    <td class="text-break">Matrículas Abertas - Mínimo de alunos não atingido!</td>
+                                    @endif
+                                    @endif
                                     <td class="text-center"> <a class="btn btn-primary" href="cursos/{{$C->id}}/edit" role="button">Editar</button></td>
                                     <td class="text-center">
                                           <form action="/cursos/delete/{{ $C->id }}" method="POST">
@@ -85,26 +93,32 @@
                               @endforeach
                             </tbody>
                         </table>
-                      
-                    </div>
+                        </div>
                 </div>
                   </div>
                   @else
+                  <div id="cards-container" class="row" >
                   @foreach($Curso as $C)
-                  <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="/img/laravel01.jpg" alt="Card image cap">
+                  <div class="card col-md-3">
+                    <img src="/img/laravel01.jpg" alt="{{ $C->Tipo}}">
                   <div class="card-body">
-                  <h5 class="card-title">{{ $C->Nome }}</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-               </div>
-                </div>
-                 
+                    <p class="card-date">27/11/22</p>
+                    <h5 class="card-title">{{ $C->Nome }}</h5>
+                    <p class="card-alunos">@if (count($C->Users) == ($C->Max))
+                                    <td class="text-break">Matrículas Encerradas</td>
+                                    @else
+                                    @if (count($C->Users) >= ($C->Min))
+                                    <td class="text-break">Matrículas Abertas - Curso acontecerá!</td>
+                                    @else
+                                    <td class="text-break">Matrículas Abertas - Mínimo de alunos não atingido!</td>
+                                    @endif
+                                    @endif</p>
+                    <a href="#" class="btn btn-primary">Saber Mais</a>
+
+                    </div>
+                    </div>
                 @endforeach
-                  @endif
-                  
-            </div>   
-        </div>
+                @endif
     </div>
 </div>
 
