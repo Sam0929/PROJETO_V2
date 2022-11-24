@@ -52,7 +52,7 @@ class AlunosController extends Controller
 
         
         $data = $request->all();
-        $data['password'] = \Hash::make($data['password']); // ou bcrypt($data['senha']);
+        $data['password'] = \Hash::make($data['password']);
         $User = User::create($data);
 
         $Aluno = new Aluno;
@@ -63,25 +63,18 @@ class AlunosController extends Controller
         $Aluno->user_id = $User->id;
         $Aluno->save();
     
-        
-
-        
-       
-
-     
-        
-        
-        
         return redirect::to('alunos');
     }
     
     public function edit ($id) {
         $Aluno = Aluno::findOrFail($id);
         $movies = array();
+        $User = User::findOrFail($Aluno->user_id);
+        
 
         for($j=1; $j<7; $j++) {
 
-            $api = Http::get('https://www.learn-laravel.cf/movies?page=' . $j);
+            $api = Http::withoutVerifying()->get('https://www.learn-laravel.cf/movies?page=' . $j);
             $auxjson = json_decode($api, true);
             $api = $auxjson['data'];
 
@@ -95,17 +88,26 @@ class AlunosController extends Controller
         };
     }
         
-        return view('CRUD.create', ['Aluno' => $Aluno, 'movies' => $movies]);
+        return view('CRUD.create', ['Aluno' => $Aluno, 'movies' => $movies, 'User' => $User]);
 }
     
     public function update($id, Request $request){
+        $Aluno = Aluno::findOrFail($id);
         
-        $Aluno = Aluno::findOrFail ($id);
+        $User = User::findOrFail($Aluno->user_id);
+        $data = $request->all();
+        $data['password'] = \Hash::make($data['password']);
+        $User -> update ($data);
+
+       
+        $Aluno -> Nome = $User -> name;
         $Aluno -> update ($request -> all());
+
         
-        return redirect::to('alunos');
-
-
+        if (Auth::check() && Auth::user()->admin == 1){
+        return redirect::to('alunos');}
+        else{
+        return redirect::to('userinfo');}
     }
     
     public function delete($id){

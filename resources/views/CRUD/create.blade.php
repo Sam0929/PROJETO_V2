@@ -32,11 +32,20 @@
                 </div>
                     <div class='card-body'> 
                         @if( Request::is('*/edit'))
+                        @if(Auth::user()->id == $Aluno->user_id OR Auth::user()->admin == 1)
                             <form action= "{{ url('alunos/update')}}/{{ $Aluno ->id }}" method="POST">
                         @csrf
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                                    <input type="text" name="Nome" class="form-control"  placeholder="Nome.." value ="{{ $Aluno-> Nome}}">
+                                    <input type="text" name="name" class="form-control"  placeholder="Nome.." value ="{{ $Aluno-> Nome}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$User->email}}"> 
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Senha</label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value ="{{$User->password}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">CPF</label>
@@ -60,6 +69,9 @@
                                 
                                  <button type='submit' class='btn btn-primary'>Atualizar</button>
                             </form>
+                        @else
+                            <h1> Você não tem permissão para editar este aluno </h1>
+                        @endif
         
                         @else
             <form action= "{{ url('alunos/add')}}" method="POST">

@@ -29,9 +29,12 @@
             <div class='card-body'>
                 
             <ul class="nav nav-pills">
+             
                 <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Dashboard</a></li>
+            @if (Auth::check() && Auth::user()->admin == 1)   
                 <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
                 <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
+            @endif
                 <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
             </ul>
             

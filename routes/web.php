@@ -30,14 +30,14 @@ Route::post('/auth', [UserController::class, 'auth']);
 Route::get('/logout', [UserController::class, 'logout']);
 Route::get('/userinfo', [UserController::class, 'userinfo']);
 
-Route::get('/alunos', [AlunosController::class,'index']);
+Route::get('/alunos', [AlunosController::class,'index'])->middleware('admin');            
 Route::get('/alunos/novo', [AlunosController::class,'new']) ->middleware('admin');           
 Route::post('/alunos/add', [AlunosController::class,'add']) ->middleware('admin');           
-Route::get('alunos/{id}/edit', [AlunosController::class,'edit'])  ->middleware('admin');                          // Rotas para Alunos
-Route::post('alunos/update/{id}', [AlunosController::class,'update']) ->middleware('admin'); 
+Route::get('alunos/{id}/edit', [AlunosController::class,'edit'])  ->middleware('auth');                          // Rotas para Alunos
+Route::post('alunos/update/{id}', [AlunosController::class,'update']) ->middleware('auth'); 
 Route::delete('alunos/delete/{id}', [AlunosController::class,'delete']) ->middleware('admin');
 
-Route::get('/professores', [ProfessoresController::class,'index']);
+Route::get('/professores', [ProfessoresController::class,'index'])->middleware('admin');
 Route::get('/professores/novo', [ProfessoresController::class,'new']) ->middleware('admin');
 Route::post('/professores/add', [ProfessoresController::class,'add']) ->middleware('admin');
 Route::get('professores/{id}/edit', [ProfessoresController::class,'edit']) ->middleware('admin');
