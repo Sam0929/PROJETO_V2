@@ -100,7 +100,7 @@
                   <div id="cards-container" class="row" >
                   @foreach($Curso as $C)
                   <div class="card col-md-3">
-                    <img src="/img/laravel01.jpg" alt="{{ $C->Tipo}}">
+                    <img src="/img/imagemcursos.jpg" alt="{{ $C->Tipo}}">
                   <div class="card-body">
                     <p class="card-date">27/11/22</p>
                     <h5 class="card-title">{{ $C->Nome }}</h5>
@@ -113,6 +113,10 @@
                                     <td class="text-break">Matrículas Abertas - Mínimo de alunos não atingido!</td>
                                     @endif
                                     @endif</p>
+                  <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Resumo: {{ $C->Resumo}}.</li>
+                  <li class="list-group-item">Descrição: {{ $C->Descrição}}.</li>
+                  </ul>               
                     <a href="#" class="btn btn-primary">Saber Mais</a>
 
                     </div>
