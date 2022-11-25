@@ -63,7 +63,6 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}">
                                         {{ __('Logout') }}
                                     </a>
-
                                 </div>
                             </li>
                         @endauth
@@ -71,9 +70,6 @@
                 </div>
             </div>
         </nav>
-        
-        <img src="{{asset('/storage/images/'.auth::user()->avatar)}}" alt="avatar" width="80" />
-        
         <main class="py-4">
             @yield('content')
         </main>
