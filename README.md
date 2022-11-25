@@ -48,9 +48,9 @@ Gerar a key do projeto Laravel
 php artisan key:generate
 ```
 
-Subir as tabelas para o banco de dados
+Subir as tabelas para o banco de dados e povoar o banco
 ```sh
-php artisan migrate
+php artisan migrate --seed
 ```
 Acesse o projeto
 [http://localhost:8080](http://localhost:8080)
