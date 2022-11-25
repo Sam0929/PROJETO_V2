@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Profe;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Redirect;
 use Illuminate\Http\Request;
 
@@ -21,8 +23,16 @@ class ProfessoresController extends Controller
 
     public function add (Request $request){
 
-        $Professores = new Profe;
-        $Professores = $Professores-> create($request -> all());
+        $data = $request->all();
+        $data['password'] = \Hash::make($data['password']);
+        $User = User::create($data);
+
+        $Profe = new Profe;
+        $Profe->Nome = $User->name;
+        $Profe->CPF = $request->CPF;
+        $Profe->Endereço = $request->Endereço;
+        $Profe->user_id = $User->id;
+        $Profe->save();
         
         return redirect::to('professores');
     }

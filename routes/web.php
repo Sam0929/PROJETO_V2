@@ -28,7 +28,7 @@ Route::get('/', [AlunosController::class,'index01']);                           
 Route::get('/login', [UserController::class,'index']);                                    // Login
 Route::post('/auth', [UserController::class, 'auth']);
 Route::get('/logout', [UserController::class, 'logout']);
-Route::get('/userinfo', [UserController::class, 'userinfo']);
+Route::get('/userinfo', [UserController::class, 'userinfo'])->middleware('auth');  
 
 Route::get('/alunos', [AlunosController::class,'index'])->middleware('admin');            
 Route::get('/alunos/novo', [AlunosController::class,'new']) ->middleware('admin');           

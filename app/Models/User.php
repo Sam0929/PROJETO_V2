@@ -45,12 +45,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function cursos() {
-        return $this->hasMany(Cursos::class);
-    }
+    
     public function aluno(){
         return $this->hasOne(Aluno::class);
     }
+    
+    public function profe(){
+        return $this->hasOne(Profe::class);
+    }
+
     public function CursosAsParticipant()
     {
         return $this->belongsToMany(Cursos::class);
