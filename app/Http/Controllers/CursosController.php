@@ -64,6 +64,6 @@ class CursosController extends Controller
 
         $curso = Cursos::findOrFail($id);
 
-        return redirect::to('cursos')->with('msg', 'Você se inscreveu no curso de '.$curso->Nome);
-    }
+        return redirect()->back()->with('success', 'Você se inscreveu no curso de '.$curso->Nome);   
 }
+} 

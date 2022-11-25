@@ -50,5 +50,5 @@ Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']) ->middleware(
 Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middleware('admin');
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
 
-Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('admin');
+Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('auth');
 

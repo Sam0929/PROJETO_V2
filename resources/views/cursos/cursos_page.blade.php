@@ -21,8 +21,16 @@
     </header>
 </div>
 <!--Conteúdo-->
+
 <div class='container'>
     <div class='row justify-content-center'>
+    @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+    @endif
         <div class='col-md-12'>
             <div class='card'>
             @if (Auth::check() && Auth::user()->admin == 1)
@@ -117,14 +125,20 @@
                   <li class="list-group-item">Resumo: {{ $C->Resumo}}.</li>
                   <li class="list-group-item">Descrição: {{ $C->Descrição}}.</li>
                   </ul>               
-                    <a href="#" class="btn btn-primary">Saber Mais</a>
-
+                  
                     </div>
+                    <div class='col-md-3 '>
+                    <a href="cursos/{{$C->id}}/join" class="btn btn-primary">Matricular</a>
+</div>
                     </div>
+                    
+                   
                 @endforeach
                 @endif
+                
     </div>
 </div>
+
 
 
 @endsection
