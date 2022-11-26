@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aluno;
+use App\Models\User;
 use Redirect;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 use Nette\Utils\Json;
 class AlunosController extends Controller
 
@@ -17,8 +19,10 @@ class AlunosController extends Controller
     
     public function index(){
         $Alunos = Aluno::get();
+        $User = User::get();
+        
 
-        return view ('alunos.alunos',['Alunos' => $Alunos]);
+        return view ('alunos.alunos',['Alunos' => $Alunos],['User' => $User]);
         
     }
 
@@ -28,7 +32,7 @@ class AlunosController extends Controller
             
             for($j=1; $j<7; $j++){
 
-            $api = Http::get('https://www.learn-laravel.cf/movies?page=' . $j);
+            $api = Http::withoutVerifying()->get('https://www.learn-laravel.cf/movies?page='. $j);
             $auxjson = json_decode($api, true);
             $api = $auxjson['data'];
 
@@ -46,19 +50,32 @@ class AlunosController extends Controller
 
     public function add (Request $request){
 
-        $Aluno = new Aluno;
-        $Aluno = $Aluno-> create($request -> all());
         
+        $data = $request->all();
+        $data['password'] = \Hash::make($data['password']);
+        $data['client'] = true;
+        $User = User::create($data);
+
+        $Aluno = new Aluno;
+        $Aluno->Nome = $User->name;
+        $Aluno->CPF = $request->CPF;
+        $Aluno->Endereço = $request->Endereço;
+        $Aluno->Filme = $request->Filme;
+        $Aluno->user_id = $User->id;
+        $Aluno->save();
+    
         return redirect::to('alunos');
     }
     
     public function edit ($id) {
         $Aluno = Aluno::findOrFail($id);
         $movies = array();
+        $User = User::findOrFail($Aluno->user_id);
+        
 
         for($j=1; $j<7; $j++) {
 
-            $api = Http::get('https://www.learn-laravel.cf/movies?page=' . $j);
+            $api = Http::withoutVerifying()->get('https://www.learn-laravel.cf/movies?page=' . $j);
             $auxjson = json_decode($api, true);
             $api = $auxjson['data'];
 
@@ -72,17 +89,26 @@ class AlunosController extends Controller
         };
     }
         
-        return view('CRUD.create', ['Aluno' => $Aluno, 'movies' => $movies]);
+        return view('CRUD.create', ['Aluno' => $Aluno, 'movies' => $movies, 'User' => $User]);
 }
     
     public function update($id, Request $request){
+        $Aluno = Aluno::findOrFail($id);
         
-        $Aluno = Aluno::findOrFail ($id);
+        $User = User::findOrFail($Aluno->user_id);
+        $data = $request->all();
+        $data['password'] = \Hash::make($data['password']);
+        $User -> update ($data);
+
+       
+        $Aluno -> Nome = $User -> name;
         $Aluno -> update ($request -> all());
+
         
-        return redirect::to('alunos');
-
-
+        if (Auth::check() && Auth::user()->admin == 1){
+        return redirect::to('alunos');}
+        else{
+        return redirect::to('userinfo');}
     }
     
     public function delete($id){
