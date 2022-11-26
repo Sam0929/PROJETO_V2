@@ -31,7 +31,7 @@
             <ul class="nav nav-pills">
              
                 <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Dashboard</a></li>
-            @if (Auth::check() && Auth::user()->admin == 1)   
+            @if (Auth::check() && Auth::user()->admin == 1 or Auth::user()->profe == 1)   
                 <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
                 <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
             @endif

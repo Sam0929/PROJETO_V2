@@ -5,8 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Auth;
-
-class ClientAcess
+class ProfeAcess
 {
     /**
      * Handle an incoming request.
@@ -17,13 +16,16 @@ class ClientAcess
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->client == 1){
+        
+        if(Auth::check() && Auth::user()->profe == 1){
             return $next($request);
         }else{
             if(Auth::check() && Auth::user()->admin == 1){
                 return $next($request);
             }
             else{
+            
+
             if(!Auth::check()){
                 return redirect('/login');
             }
@@ -32,3 +34,4 @@ class ClientAcess
         }
     }
 }
+

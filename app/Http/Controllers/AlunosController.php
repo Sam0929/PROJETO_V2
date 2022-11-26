@@ -53,6 +53,7 @@ class AlunosController extends Controller
         
         $data = $request->all();
         $data['password'] = \Hash::make($data['password']);
+        $data['client'] = true;
         $User = User::create($data);
 
         $Aluno = new Aluno;

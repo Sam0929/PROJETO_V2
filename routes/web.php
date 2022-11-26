@@ -37,11 +37,11 @@ Route::get('alunos/{id}/edit', [AlunosController::class,'edit'])  ->middleware('
 Route::post('alunos/update/{id}', [AlunosController::class,'update']) ->middleware('auth'); 
 Route::delete('alunos/delete/{id}', [AlunosController::class,'delete']) ->middleware('admin');
 
-Route::get('/professores', [ProfessoresController::class,'index'])->middleware('admin');
+Route::get('/professores', [ProfessoresController::class,'index'])->middleware('profe');
 Route::get('/professores/novo', [ProfessoresController::class,'new']) ->middleware('admin');
 Route::post('/professores/add', [ProfessoresController::class,'add']) ->middleware('admin');
-Route::get('professores/{id}/edit', [ProfessoresController::class,'edit']) ->middleware('admin');
-Route::post('professores/update/{id}', [ProfessoresController::class,'update']) ->middleware('admin');           // Rotas para Professores
+Route::get('professores/{id}/edit', [ProfessoresController::class,'edit'])->middleware('profe');
+Route::post('professores/update/{id}', [ProfessoresController::class,'update']) ->middleware('profe');           // Rotas para Professores
 Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete']) ->middleware('admin');
 
 Route::get('/cursos', [CursosController::class, 'index']);

@@ -25,6 +25,7 @@ class ProfessoresController extends Controller
 
         $data = $request->all();
         $data['password'] = \Hash::make($data['password']);
+        $data['profe'] = true;
         $User = User::create($data);
 
         $Profe = new Profe;

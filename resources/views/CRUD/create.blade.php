@@ -126,20 +126,7 @@
                         
                         
                         
-                            
-                    <div class="mb-3">
-                            <label for="permission" class="form-label">Permissão</label>
-                            <select class="form-select" name='admin' aria-label="Default select example">
-                                <option selected>Selecione a permissão do usuário</option>
-                                                    <option value="1">Administrador</option>
-                                                    <option value="0">Aluno</option>
-                            @error('admin')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ '$message' }}</strong>
-                                    </span>
-                            @enderror
-                            </select>
-                    </div>
+                    
                 </div>
 
                             <div class="row mb-0">
