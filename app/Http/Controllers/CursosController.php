@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Cursos;
 use App\Models\User;
+use App\Models\Profe;
+use Illuminate\Support\Facades\Auth;
+use Professores;
 use Redirect;
 use Illuminate\Http\Request;
 
@@ -64,6 +67,31 @@ class CursosController extends Controller
 
         $curso = Cursos::findOrFail($id);
 
+
         return redirect()->back()->with('success', 'Você se inscreveu no curso de '.$curso->Nome);   
+
+    }
+
+    public function addCurso($id, request $request){
+        $profe = auth()->user()->profe()->first();
+        $profe->CursosAsProfe()->attach($id);
+        $curso = Cursos::findOrFail($id);
+
+        return redirect::to('cursos');
+
+    }
+
+    public function CursosDoAluno(){
+        $user = auth()->user();
+        $Cursos = $user->CursosAsParticipant()->get();
+
+        return view('cursos.cursos_do_aluno', ['cursos' => $Cursos]);
+    }
+    public function CursosDoProfe(){
+        $profe = auth()->user()->profe()->first();
+        $Cursos = $profe->CursosAsProfe()->get();
+
+        return view('cursos.cursos_do_profe', ['cursos' => $Cursos]);
+    }
+
 }
-} 

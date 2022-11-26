@@ -22,13 +22,15 @@ class DatabaseSeeder extends Seeder
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
+            'admin' => '1',
         ]);
-
+        
         DB::table('users')->insert([
             
             'name' => "Xastre",
             'email' => 'xastre_professor@gmail.com',
             'password' => Hash::make('profxastre'),
+            'admin' => '1',
         ]);
 
         DB::table('users')->insert([
@@ -38,6 +40,32 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('1234qwer'),
             'admin' => '1',
         ]);
+        
+        DB::table('users')->insert([
+
+            'name' => "Aluno1",
+            'email' => 'Aluno1@gmail.com',
+            'password' => Hash::make('1234qwer'),
+        ]);
+        DB::table('users')->insert([
+
+            'name' => "Aluno2",
+            'email' => 'Aluno2@gmail.com',
+            'password' => Hash::make('1234qwer'),
+        ]);
+        DB::table('users')->insert([
+
+            'name' => "Aluno3",
+            'email' => 'Aluno3@gmail.com',
+            'password' => Hash::make('1234qwer'),
+        ]);
+        DB::table('users')->insert([
+
+            'name' => "Aluno4",
+            'email' => 'Aluno4@gmail.com',
+            'password' => Hash::make('1234qwer'),
+        ]);
+
         DB::table('cursos')->insert([
             
             'Nome' => "Cálculo integrado",
@@ -50,5 +78,79 @@ class DatabaseSeeder extends Seeder
             'user_id' => '2',
         
         ]);
+        DB::table('cursos')->insert([
+            
+            'Nome' => "Cálculo 1",
+            'Tipo' => 'Matematica',
+            'Resumo' =>'Cálculo A',
+            'Descrição' => '1',
+            'Max' => '100',
+            'Min' => '10',
+            'Status' => '1',
+            'user_id' => '2',
+        
+        ]);
+        DB::table('cursos')->insert([
+            
+            'Nome' => "Cálculo 2",
+            'Tipo' => 'Matematica',
+            'Resumo' =>'Cálculo B',
+            'Descrição' => '1',
+            'Max' => '100',
+            'Min' => '10',
+            'Status' => '1',
+            'user_id' => '2',
+        
+        ]);
+        DB::table('cursos')->insert([
+            
+            'Nome' => "Cálculo 3",
+            'Tipo' => 'Matematica',
+            'Resumo' =>'Cálculo C',
+            'Descrição' => '1',
+            'Max' => '100',
+            'Min' => '10',
+            'Status' => '1',
+            'user_id' => '2',
+        
+        ]);
+
+        DB::table('Alunos')->insert([
+            
+            'Nome' => "Aluno1",
+            'CPF' => '123456789',
+            'Endereço' => 'Rua 1',
+            'Filme' => 'Matrix',
+            'user_id' => '4',
+        
+        ]);
+        DB::table('Alunos')->insert([
+            
+            'Nome' => "Aluno2",
+            'CPF' => '123456789',
+            'Endereço' => 'Rua 2',
+            'Filme' => 'Transformers',
+            'user_id' => '5',
+        
+        ]);
+        DB::table('Alunos')->insert([
+            
+            'Nome' => "Aluno3",
+            'CPF' => '123456789',
+            'Endereço' => 'Rua 3',
+            'Filme' => 'Tron',
+            'user_id' => '6',
+        
+        ]);
+        DB::table('Alunos')->insert([
+            
+            'Nome' => "Aluno4",
+            'CPF' => '123456789',
+            'Endereço' => 'Rua 4',
+            'Filme' => 'Massacre da Serra Elétrica',
+            'user_id' => '7',
+        
+        ]);
+        
     }
 }

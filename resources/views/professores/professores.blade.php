@@ -41,8 +41,6 @@
                                   <th scope="col">Nome</th>
                                   <th scope="col">CPF</th>
                                   <th scope="col">Endereço</th>
-                                  <th scope="col">Usuário</th>
-                                  <th scope="col">Senha</th>
                                   <th scope="col">Editar</th>
                                   <th scope="col">Deletar</th>
                                 </tr>
@@ -56,8 +54,6 @@
                                     <td class="text-break">{{ $P->Nome }}</td>
                                     <td class="text-break">{{ $P->CPF}}</td>
                                     <td class="text-break">{{ $P->Endereço}}</td>
-                                    <td class="text-break">{{ $P->Usuário}}</td>
-                                    <td class="text-break">{{ $P->Senha}}</td>
                                     <td class="text-center"> <a class="btn btn-primary" href="professores/{{$P->id}}/edit" role="button">Editar</button></td>
                                     <td class="text-center">
                                           <form action="/professores/delete/{{ $P->id }}" method="post">

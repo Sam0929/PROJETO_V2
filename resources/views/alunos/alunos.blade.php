@@ -54,11 +54,11 @@
                               
                                   <tr>
                                     <td class="fw-bold">{{ $A->id }}</td>
-                                    <td class="text-break">{{ $A->User->name}}</td>
+                                    <td class="text-break">{{ $A->Nome}}</td>
                                     <td class="text-break">{{ $A->CPF}}</td>
                                     <td class="text-break">{{ $A->Endereço}}</td>
                                     <td class="text-break">{{ $A->Filme }}</td>
-                                    <td class="text-center"> <a class="btn btn-primary" href="alunos/{{$A->id}}/edit" role="button">Editar</button></td>
+                                    <td class="text-center"> <a class="btn btn-primary" href="alunos/{{$A->id}}/edit" role="button">Editar</a></td>
                                     <td class="text-center">
                                           <form action="alunos/delete/{{ $A->id }}" method="post">
                                           @csrf

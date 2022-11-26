@@ -32,11 +32,20 @@
                 </div>
                     <div class='card-body'> 
                         @if( Request::is('*/edit'))
+                        @if(Auth::user()->id == $Aluno->user_id OR Auth::user()->admin == 1)
                             <form action= "{{ url('alunos/update')}}/{{ $Aluno ->id }}" method="POST">
                         @csrf
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                                    <input type="text" name="Nome" class="form-control"  placeholder="Nome.." value ="{{ $Aluno-> Nome}}">
+                                    <input type="text" name="name" class="form-control"  placeholder="Nome.." value ="{{ $Aluno-> Nome}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$User->email}}"> 
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Senha</label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value ="{{$User->password}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">CPF</label>
@@ -60,12 +69,15 @@
                                 
                                  <button type='submit' class='btn btn-primary'>Atualizar</button>
                             </form>
+                        @else
+                            <h1> Você não tem permissão para editar este aluno </h1>
+                        @endif
         
                         @else
-                            <form action= "{{ url('alunos/add')}}" method="POST">
+            <form action= "{{ url('alunos/add')}}" method="POST">
                         
                         @csrf
-                    <div class="row mb-0">
+                <div class="row mb-0">
                         <div class="mb-3">   
                         <label for="name" class="form-label">{{ __('Name') }}</label>
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -75,13 +87,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        
-
-                        
-                            
-
-                            <div class="mb-3">
+                    </div>
+            
+                    <div class="mb-3">
                             <label for="email" class="form-label">Email Address</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
@@ -90,13 +98,13 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                    </div>
                        
 
                         
                             
 
-                            <div class="mb-3">
+                    <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
@@ -105,36 +113,23 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                    </div>
                        
 
                         
                            
 
-                            <div class="mb-3">
+                    <div class="mb-3">
                             <label for="password-confirm" class="form-label">Confirm Password</label>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+                     </div>
                         
                         
                         
-                            
-                            <div class="mb-3">
-                            <label for="permission" class="form-label">Permissão</label>
-                            <select class="form-select" name='admin' aria-label="Default select example">
-                                <option selected>Selecione a permissão do usuário</option>
-                                                    <option value="1">Administrador</option>
-                                                    <option value="0">Aluno</option>
-                            @error('admin')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ '$message' }}</strong>
-                                    </span>
-                            @enderror
-                            </select>
-                            </div>
-                    </div>
+                    
+                </div>
 
-                        <div class="row mb-0">
+                            <div class="row mb-0">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">CPF</label>
                                     <input type="text" name="CPF" class="form-control"  placeholder="CPF..">
@@ -153,10 +148,10 @@
 					                        
 				                    </select>                    
                                 </div>
-</div>
+                            </div>
                                 
                                     <button type='submit' class='btn btn-primary'>Salvar</button>
-                            </form>
+            </form>
                             @endif
                        
                     

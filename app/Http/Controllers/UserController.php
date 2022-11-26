@@ -13,20 +13,25 @@ class UserController extends Controller
 
         return view ('auth.login');
     }
-    
-    
-    
-    public function auth(Request $request){ 
 
-        $data =  $request->all();
-        $remmenber =  isset($data['lembrar']) ? true : false;
+    public function userinfo(){
+        
+        return view ('auth.userinfo');
+    }
 
-        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']], $remmenber)){
-            return redirect('/');
-        }else{
-            return redirect('/login');
+    public function auth(Request $request){
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/');
         }
 
+        return back()->withErrors([
+            'email' => 'As credenciais inseridas estão incorretas.',
+        ]);
     }
 
     public function logout(){

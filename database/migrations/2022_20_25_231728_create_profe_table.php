@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string("Nome");  
             $table->string("CPF");
             $table->string("Endereço");
-            $table->string("Usuário");
-            $table->string("Senha");
+            $table->foreignid("user_id")->constrained()->onDelete('cascade');
         });
     }
 
