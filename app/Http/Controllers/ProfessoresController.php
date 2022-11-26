@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Profe;
 use App\Models\User;
+use App\Models\Cursos;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
 use Illuminate\Http\Request;
@@ -23,10 +24,13 @@ class ProfessoresController extends Controller
 
     public function add (Request $request){
 
-        $data = $request->all();
-        $data['password'] = \Hash::make($data['password']);
-        $data['profe'] = true;
-        $User = User::create($data);
+       $User = new User;
+        $User->name = $request->name;
+        $User->email = $request->email;
+        $User->password = bcrypt($request->password);
+        $User->profe = true;
+        $User->save();
+        
 
         $Profe = new Profe;
         $Profe->Nome = $User->name;
@@ -56,5 +60,11 @@ class ProfessoresController extends Controller
     
     return redirect::to('professores');
 }
+    public function cursos($id){
+        $Professores = Profe::findOrFail($id);
+        $Cursos = $Professores->cursos;
+        return view('professores.cursos',['Cursos' => $Cursos]);
+    }
+    
 
 }

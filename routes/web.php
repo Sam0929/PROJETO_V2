@@ -43,6 +43,8 @@ Route::post('/professores/add', [ProfessoresController::class,'add']) ->middlewa
 Route::get('professores/{id}/edit', [ProfessoresController::class,'edit'])->middleware('profe');
 Route::post('professores/update/{id}', [ProfessoresController::class,'update']) ->middleware('profe');           // Rotas para Professores
 Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete']) ->middleware('admin');
+Route::get('/professores/{id}/add', [CursosController::class,'addCurso']) ->middleware('profe');
+Route::get('/professores/{id}/cursos', [ProfessoresController::class,'cursos']) ->middleware('profe');
 
 Route::get('/cursos', [CursosController::class, 'index']);
 Route::get('/cursos/novo', [CursosController::class,'new']) ->middleware('admin');
@@ -51,5 +53,10 @@ Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']) ->middleware(
 Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middleware('admin');
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
 
-Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('admin');
+Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('auth');
+Route::get('/cursos/aluno', [CursosController::class,'CursosDoAluno']) ->middleware('auth');
+Route::get('/cursos/profe', [CursosController::class,'CursosDoProfe']) ->middleware('profe');
+Route::get('/cursos/{id}/leave', [CursosController::class,'Leave']) ->middleware('auth');
+
+
 

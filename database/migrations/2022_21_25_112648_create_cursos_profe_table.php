@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cursos_profe_tables', function (Blueprint $table) {
+        Schema::create('cursos_profe', function (Blueprint $table) {
             $table->foreignid('cursos_id')->constrained();
-            $table->foreignid('profe_id')->references('id')->on('users');
+            $table->foreignid('profe_id')->references('id')->on('profe');
             $table->timestamps();
         });
     }

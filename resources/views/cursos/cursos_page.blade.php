@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Professores Matriculados')
+@section('title','Todos os cursos')
 
 @section('content')
 <!--Cabeçalho-->
@@ -88,6 +88,11 @@
                                       @csrf
                                     <td class="text-center"> <a class="btn btn-primary" href="cursos/{{$C->id}}/join" onclick="curso.preventDefault();
                                     this.closest('form').submit();">Matricular</td>
+                                    </form>
+                                    <form action="/professores/{{ $C->id }}/add" method="POST">
+                                      @csrf
+                                    <td class="text-center"> <a class="btn btn-primary" href="/professores/{{ $C->id }}/add" onclick="curso.preventDefault();
+                                    this.closest('form').submit();">Ministrar</td>
                                     </form>
                                   </tr>
                               @endforeach

@@ -20,9 +20,10 @@ public function user() {
     return $this->HasOne(User::class);
 }
 
-public function cursos() {
+ 
+public function CursosAsProfe() {
 
     return $this->belongsToMany(Cursos::class);
 }
-        
+
 }

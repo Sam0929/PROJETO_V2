@@ -22,9 +22,9 @@ class Cursos extends Model
     {
         return $this->belongsToMany(User::class);
     }
-    public function profe(){
+    public function profes(){
 
-        return $this->hasOne(Profe::class);
+        return $this->belongsToMany(Profe::class);
     }
 
 }
