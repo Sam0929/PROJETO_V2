@@ -54,9 +54,8 @@ Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middlew
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
 
 Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('auth');
+
 Route::get('/cursos/aluno', [CursosController::class,'CursosDoAluno']) ->middleware('auth');
 Route::get('/cursos/profe', [CursosController::class,'CursosDoProfe']) ->middleware('profe');
 Route::get('/cursos/{id}/leave', [CursosController::class,'Leave']) ->middleware('auth');
-
-
 

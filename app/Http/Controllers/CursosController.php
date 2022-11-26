@@ -67,7 +67,9 @@ class CursosController extends Controller
 
         $curso = Cursos::findOrFail($id);
 
-        return redirect::to('cursos')->with('msg', 'Você se inscreveu no curso de '.$curso->Nome);
+
+        return redirect()->back()->with('success', 'Você se inscreveu no curso de '.$curso->Nome);   
+
     }
 
     public function addCurso($id, request $request){
@@ -91,4 +93,5 @@ class CursosController extends Controller
 
         return view('cursos.cursos_do_profe', ['cursos' => $Cursos]);
     }
+
 }

@@ -21,13 +21,21 @@
     </header>
 </div>
 <!--Conteúdo-->
+
 <div class='container'>
     <div class='row justify-content-center'>
+    @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+    @endif
         <div class='col-md-12'>
             <div class='card'>
             @if (Auth::check() && Auth::user()->admin == 1)
             <div class="card-header"><a class="btn btn-primary" href="{{url('cursos/novo')}}" role="button"> Novo Curso</a> </div>
-            @endif
+
                     <div class='card-body'>
                
                 
@@ -98,11 +106,44 @@
                               @endforeach
                             </tbody>
                         </table>
+                        </div>
+                </div>
                   </div>
-            </div>   
-        </div>
+                  @else
+                  <div id="cards-container" class="row" >
+                  @foreach($Curso as $C)
+                  <div class="card col-md-3">
+                    <img src="/img/imagemcursos.jpg" alt="{{ $C->Tipo}}">
+                  <div class="card-body">
+                    <p class="card-date">27/11/22</p>
+                    <h5 class="card-title">{{ $C->Nome }}</h5>
+                    <p class="card-alunos">@if (count($C->Users) == ($C->Max))
+                                    <td class="text-break">Matrículas Encerradas</td>
+                                    @else
+                                    @if (count($C->Users) >= ($C->Min))
+                                    <td class="text-break">Matrículas Abertas - Curso acontecerá!</td>
+                                    @else
+                                    <td class="text-break">Matrículas Abertas - Mínimo de alunos não atingido!</td>
+                                    @endif
+                                    @endif</p>
+                  <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Resumo: {{ $C->Resumo}}.</li>
+                  <li class="list-group-item">Descrição: {{ $C->Descrição}}.</li>
+                  </ul>               
+                  
+                    </div>
+                    <div class='col-md-3 '>
+                    <a href="cursos/{{$C->id}}/join" class="btn btn-primary">Matricular</a>
+</div>
+                    </div>
+                    
+                   
+                @endforeach
+                @endif
+                
     </div>
 </div>
+
 
 
 @endsection
