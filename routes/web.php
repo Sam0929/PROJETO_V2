@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,6 @@ use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-
-
-
 
 Route::get('/', [AlunosController::class,'index01']);                                       // Home
 
@@ -53,3 +51,9 @@ Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middlew
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
 
 Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('admin');
+
+Route::post('/upload', function(Request $request){
+    $request->image->store('image','public');
+    return 'Uploaded';
+});
+

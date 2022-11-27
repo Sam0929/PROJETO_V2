@@ -49,7 +49,7 @@
                                   
                                   <th scope="col">Editar</th>
                                   <th scope="col">Deletar</th>
-                                  <th scope="col">NomedoAluno</th>
+                                  <th scope="col">Nome do Aluno</th>
                                   <th scope="col">Matricular</th>
                                 </tr>
                             </thead>

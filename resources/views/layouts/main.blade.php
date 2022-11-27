@@ -68,12 +68,16 @@
                             </li>
                         @endauth
                     </ul>
+                    <div class="card-body">
+                            <form action="/upload" method="post" enctype="multiform/form-data">
+                                @csrf
+                                <input type="file" name="image"/>
+                                <input type="submit" name="Upload"/>
+                            </form>
+
                 </div>
             </div>
-        </nav>
-        
-        <img src="{{asset('/storage/images/'.auth::user()->avatar)}}" alt="avatar" width="80" />
-        
+        </nav>  
         <main class="py-4">
             @yield('content')
         </main>

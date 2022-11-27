@@ -26,6 +26,14 @@
                             <input type="file" name="image" />
                             <input type="submit" value="Upload" />
                         </form> 
+
+
+                        <div class="card-body">
+                            <form action="/upload" method="post" enctype="multiform/form-data">
+                                @csrf
+                                <input type="file" name="image"/>
+                                <input type="submit" name="Upload"/>
+                            </form>
                 </div>
             </div>
         </div>
