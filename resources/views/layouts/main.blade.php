@@ -63,7 +63,6 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}">
                                         {{ __('Logout') }}
                                     </a>
-
                                 </div>
                             </li>
                         @endauth
@@ -78,6 +77,7 @@
                 </div>
             </div>
         </nav>  
+        </nav>
         <main class="py-4">
             @yield('content')
         </main>
