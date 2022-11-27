@@ -113,6 +113,8 @@ class AlunosController extends Controller
     
     public function delete($id){
         $Aluno = Aluno::findOrFail ($id);
+        $User = User::findOrFail($Aluno->user_id);
+        $User -> delete();
         $Aluno -> delete();
         return redirect::to('alunos');
     }

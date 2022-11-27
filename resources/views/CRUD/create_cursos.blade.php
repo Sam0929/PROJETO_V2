@@ -12,12 +12,15 @@
             <span class="fs-4">Banco de Alunos</span>
       </a>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link" >Home</a></li>
-                <li class="nav-item"><a href="/alunos" class="nav-link">Tabela de Alunos</a></li>
-                <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
-                <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
-            </ul>
+      <ul class="nav nav-pills">
+             
+             <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Dashboard</a></li>
+         @if (Auth::check() && Auth::user()->admin == 1 or Auth::user()->profe == 1)   
+             <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
+             <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
+         @endif
+             <li class="nav-item"><a href="/cursos" class="nav-link active">Cursos</a></li>
+         </ul>
     
     </header>
 </div>
@@ -59,15 +62,7 @@
                                     <label for="exampleFormControlInput1" class="form-label">Min</label>
                                     <input type="text" name="Min" class="form-control"  placeholder="Min.." value = "{{ $Cursos-> Min}}">                    
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Status</label>
-                                    <select class="form-select" name='Status' aria-label="Default select example">
-                                        <option selected>{{ $Cursos-> Status}}</option>
-                                        <option value="Matrículas Abertas - Mínimo de alunos não atingido!">Matrículas Abertas - Mínimo de alunos não atingido!</option>
-                                        <option value="Matrículas Abertas - Curso acontecerá!">Matrículas Abertas - Curso acontecerá!</option>
-                                        <option value="Matrículas Encerradas">Matrículas Encerradas</option>
-                                    </select>
-                                </div>
+                               
                                 
                                  <button type='submit' class='btn btn-primary text-center'>Atualizar</button>
                             </form>
@@ -97,15 +92,6 @@
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label">Min</label>
                                                     <input type="text" name="Min" class="form-control"  placeholder="Min..">                    
-                                                </div>
-                                                <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Status</label>
-                                                <select class="form-select" name='Status' aria-label="Default select example">
-                                                    <option selected>Selecione o status do curso!</option>
-                                                    <option value="Matrículas Abertas - Mínimo de alunos não atingido!">Matrículas Abertas - Mínimo de alunos não atingido!</option>
-                                                    <option value="Matrículas Abertas - Curso acontecerá!">Matrículas Abertas - Curso acontecerá!</option>
-                                                    <option value="Matrículas Encerradas">Matrículas Encerradas</option>
-                                                </select>
                                                 </div>
                                                     <button type='submit' class='btn btn-primary'>Salvar</button>
                                                 </form>

@@ -13,11 +13,27 @@ class CursosController extends Controller
 {
     public function index(){
         $Cursos = Cursos::get();
-       
-
-        return view ('cursos.cursos_page',['Curso' => $Cursos]);
-        
+        return view ('cursos.cursos_page',['Curso' => $Cursos]);      
 }
+    public function CursosInfo($id){
+       
+        $Curso = Cursos::findOrFail($id);
+        $Profe = $Curso -> profes -> first();
+        $hasUserJoined = false;
+        $user = auth()->user();
+        if($user) {
+
+            $userCursos = $user->CursosAsParticipant->toArray();
+
+            foreach($userCursos as $userCurso) {
+                if($userCurso['id'] == $id) {
+                    $hasUserJoined = true;
+                }
+            }
+
+        }
+
+        return view ('cursos.cursos_info',['Curso' => $Curso, 'hasUserJoined' => $hasUserJoined, 'Profe'=> $Profe]);}
     public function new(){
 
     return view ('CRUD.create_cursos');
@@ -33,7 +49,6 @@ class CursosController extends Controller
         $Cursos->Descrição = $request->Descrição;
         $Cursos->Max = $request->Max;
         $Cursos->Min = $request->Min;
-        $Cursos->Status = $request->Status;
         $User = auth()->user();
         $Cursos->user_id = $User->id;
         $Cursos->save();
@@ -61,6 +76,7 @@ class CursosController extends Controller
         $Cursos -> delete();
         return redirect::to('cursos');
     }
+    
     public function join($id){
         $user = auth()->user();
         $user->CursosAsParticipant()->attach($id);
@@ -77,7 +93,7 @@ class CursosController extends Controller
         $profe->CursosAsProfe()->attach($id);
         $curso = Cursos::findOrFail($id);
 
-        return redirect::to('cursos');
+        return redirect()->back()->with('success', 'Você se tornou professor do curso de '.$curso->Nome .'!');
 
     }
 
@@ -92,6 +108,14 @@ class CursosController extends Controller
         $Cursos = $profe->CursosAsProfe()->get();
 
         return view('cursos.cursos_do_profe', ['cursos' => $Cursos]);
+    }
+    public function LeaveCurso($id){
+        $user = auth()->user();
+        $user->CursosAsParticipant()->detach($id);
+
+        $curso = Cursos::findOrFail($id);
+
+        return redirect()->back()->with('success', 'Você saiu do curso de '.$curso->Nome);   
     }
 
 }

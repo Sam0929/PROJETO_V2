@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Xastre",
             'email' => 'xastre_professor@gmail.com',
             'password' => Hash::make('profxastre'),
-            'admin' => '1',
+            'profe' => '1',
         ]);
 
         DB::table('users')->insert([
@@ -65,58 +65,73 @@ class DatabaseSeeder extends Seeder
             'email' => 'Aluno4@gmail.com',
             'password' => Hash::make('1234qwer'),
         ]);
+        DB::table('users')->insert([
+
+            'name' => "Professor1",
+            'email' => 'Professor1@gmail.com',
+            'password' => Hash::make('1234qwer'),
+            'profe' => '1',
+        ]);
+        DB::table('users')->insert([
+
+            'name' => "Professor2",
+            'email' => 'Professor2@gmail.com',
+            'password' => Hash::make('1234qwer'),
+            'profe'=> '1',
+        ]);
+
 
         DB::table('cursos')->insert([
-            
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d'),
             'Nome' => "Cálculo integrado",
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo A,B,C',
             'Descrição' => '1',
             'Max' => '100',
             'Min' => '10',
-            'Status' => '1',
             'user_id' => '2',
         
         ]);
         DB::table('cursos')->insert([
-            
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d'),
             'Nome' => "Cálculo 1",
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo A',
             'Descrição' => '1',
             'Max' => '100',
             'Min' => '10',
-            'Status' => '1',
             'user_id' => '2',
         
         ]);
         DB::table('cursos')->insert([
-            
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d'),
             'Nome' => "Cálculo 2",
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo B',
             'Descrição' => '1',
             'Max' => '100',
             'Min' => '10',
-            'Status' => '1',
             'user_id' => '2',
         
         ]);
         DB::table('cursos')->insert([
-            
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d'),
             'Nome' => "Cálculo 3",
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo C',
             'Descrição' => '1',
             'Max' => '100',
             'Min' => '10',
-            'Status' => '1',
             'user_id' => '2',
         
         ]);
 
         DB::table('Alunos')->insert([
-            
+           
             'Nome' => "Aluno1",
             'CPF' => '123456789',
             'Endereço' => 'Rua 1',
@@ -151,6 +166,19 @@ class DatabaseSeeder extends Seeder
             'user_id' => '7',
         
         ]);
-        
+        DB::table('profe')->insert([
+
+            'Nome' => "Professor1",
+            'CPF' => '123456789',
+            'Endereço' => 'Rua 5',
+            'user_id' => '8',
+        ]);
+        DB::table('profe')->insert([
+
+            'Nome' => "Professor2",
+            'CPF' => '123456789',
+            'Endereço' => 'Rua 6',
+            'user_id' => '9',
+        ]);
     }
 }

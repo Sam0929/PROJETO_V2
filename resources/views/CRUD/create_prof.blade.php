@@ -12,13 +12,16 @@
             <span class="fs-4">Banco de Alunos</span>
       </a>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link" >Home</a></li>
-                <li class="nav-item"><a href="/alunos" class="nav-link">Tabela de Alunos</a></li>
-                <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
-                <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
-            </ul>
-    
+      <ul class="nav nav-pills">
+             
+             <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Dashboard</a></li>
+         @if (Auth::check() && Auth::user()->admin == 1 or Auth::user()->profe == 1)   
+             <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
+             <li class="nav-item"><a href="/professores" class="nav-link active">Tabela de Professores</a></li>
+         @endif
+             <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
+         </ul>
+
     </header>
 </div>
 
@@ -37,7 +40,15 @@
                         @csrf
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                                    <input type="text" name="Nome" class="form-control"  placeholder="Nome.." value ="{{ $Profe-> Nome}}">
+                                    <input type="text" name="name" class="form-control"  placeholder="Nome.." value ="{{ $Profe-> Nome}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$User->email}}"> 
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Senha</label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value ="{{$User->password}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">CPF</label>
@@ -46,14 +57,6 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Endereço</label>
                                     <input type="text" name="Endereço" class="form-control"  placeholder="Endereço.." value ="{{ $Profe-> Endereço}}">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Usuário</label>
-                                    <input type="text" name="Usuário" class="form-control"  placeholder="Usuário.." value = "{{ $Profe-> Usuário}}">                    
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Senha</label>
-                                    <input type="text" name="Senha" class="form-control"  placeholder="Senha.." value = "{{ $Profe-> Senha}}">                    
                                 </div>
                                 
                                  <button type='submit' class='btn btn-primary'>Atualizar</button>

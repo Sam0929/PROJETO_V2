@@ -22,7 +22,6 @@ return new class extends Migration
             $table->text("Descrição");
             $table->integer("Max");
             $table->integer("Min");
-            $table->string("Status");
             $table->foreignid("user_id")->constrained();
         });
     }
@@ -34,7 +33,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cursos');
+        Schema::dropIfExists('cursos', function (Blueprint $table) {
+            $table->dropForeign('cursos_user_id_foreign');
+        });
     
     }
 };

@@ -11,13 +11,16 @@
             <span class="fs-4">Banco de Alunos</span>
       </a>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link" >Home</a></li>
-                <li class="nav-item"><a href="/alunos" class="nav-link" aria-current="page">Tabela de Alunos</a></li>
-                <li class="nav-item"><a href="/professores" class="nav-link" aria-current="page">Tabela de Professores</a></li>
-                <li class="nav-item"><a href="/cursos" class="nav-link active">Cursos</a></li>
-            </ul>
-    
+      <ul class="nav nav-pills">
+             
+             <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Dashboard</a></li>
+         @if (Auth::check() && Auth::user()->admin == 1 or Auth::user()->profe == 1)   
+             <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
+             <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
+         @endif
+             <li class="nav-item"><a href="/cursos" class="nav-link active">Cursos</a></li>
+         </ul>
+     
     </header>
 </div>
 <!--Conteúdo-->
@@ -57,8 +60,7 @@
                                   
                                   <th scope="col">Editar</th>
                                   <th scope="col">Deletar</th>
-                                  <th scope="col">Criador</th>
-                                  <th scope="col">Matricular</th>
+                                  <th scope="col">Info</th>
                                 </tr>
                             </thead>
                             
@@ -91,17 +93,8 @@
                                           <button class="btn btn-danger">Deletar</button>
                                           </form>
                                     </td>
-                                    <td class="text-break">{{ $C->user->name}}</td>
-                                    <form action="/cursos/{{ $C->id }}/join" method="POST">
-                                      @csrf
-                                    <td class="text-center"> <a class="btn btn-primary" href="cursos/{{$C->id}}/join" onclick="curso.preventDefault();
-                                    this.closest('form').submit();">Matricular</td>
-                                    </form>
-                                    <form action="/professores/{{ $C->id }}/add" method="POST">
-                                      @csrf
-                                    <td class="text-center"> <a class="btn btn-primary" href="/professores/{{ $C->id }}/add" onclick="curso.preventDefault();
-                                    this.closest('form').submit();">Ministrar</td>
-                                    </form>
+                                    <td class="text-center"><a class="btn btn-primary" href="cursos/info/{{$C->id}}">Mais_inf</button></td>
+                    
                                   </tr>
                               @endforeach
                             </tbody>
@@ -109,40 +102,50 @@
                         </div>
                 </div>
                   </div>
-                  @else
-                  <div id="cards-container" class="row" >
-                  @foreach($Curso as $C)
-                  <div class="card col-md-3">
-                    <img src="/img/imagemcursos.jpg" alt="{{ $C->Tipo}}">
-                  <div class="card-body">
-                    <p class="card-date">27/11/22</p>
-                    <h5 class="card-title">{{ $C->Nome }}</h5>
-                    <p class="card-alunos">@if (count($C->Users) == ($C->Max))
-                                    <td class="text-break">Matrículas Encerradas</td>
-                                    @else
-                                    @if (count($C->Users) >= ($C->Min))
-                                    <td class="text-break">Matrículas Abertas - Curso acontecerá!</td>
-                                    @else
-                                    <td class="text-break">Matrículas Abertas - Mínimo de alunos não atingido!</td>
+                                @else
+                                  <div id="cards-container" class="row">
+                                      @foreach($Curso as $C)
+                                      <div class="card col-md-3">
+                                        <img src="/img/imagemcursos.jpg" alt="{{ $C->Tipo}}">
+                                          <div class="card-body">
+                                            <h5 class="card-title">{{ $C->Nome }}</h5>
+                                            
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Resumo: {{ $C->Resumo}}.</li>
+                                        
+                                            </ul>
+                                          
+                                          @if (Auth::check() && Auth::user()->profe == 1)
+                                            
+                                              <form action="/professores/{{ $C->id }}/add" method="POST">
+                                                @csrf
+                                                <div class='text-center position-relative'>
+                                                <a class="text-center position-relative btn btn-primary" href="/professores/{{ $C->id }}/add" onclick="curso.preventDefault();
+                                                  this.closest('form').submit();">Ministrar</a>
+                                              </form>
+                                                </div>
+                                            </div>
+                                              </div>
+                                            
+                                          @else
+                                       
+                                
+                                  
+                                     
+                                        
+                                      </div>
+                                         <div class='text-center position-relative'>
+                                        <a class="btn btn-primary" href="cursos/info/{{$C->id}}">Saber mais</button></a>
+                                        </div>
+                                        
+                                        </div>
+                                        @endif
+                                      
+                                      @endforeach
+                       
                                     @endif
-                                    @endif</p>
-                  <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Resumo: {{ $C->Resumo}}.</li>
-                  <li class="list-group-item">Descrição: {{ $C->Descrição}}.</li>
-                  </ul>               
-                  
-                    </div>
-                    <div class='col-md-3 '>
-                    <a href="cursos/{{$C->id}}/join" class="btn btn-primary">Matricular</a>
-</div>
-                    </div>
-                    
-                   
-                @endforeach
-                @endif
-                
-    </div>
-</div>
+                                    
+                        
 
 
 

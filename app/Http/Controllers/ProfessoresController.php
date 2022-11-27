@@ -44,21 +44,36 @@ class ProfessoresController extends Controller
 
     public function delete($id){
         $Professores = Profe::findOrFail ($id);
+        $User = User::findOrFail($Professores->user_id);
+        $User->delete();
         $Professores -> delete();
         return redirect::to('professores');
     }
 
     public function edit ($id) {
-        $Professores = Profe::findOrFail($id);
-
-        return view('CRUD.create_prof',['Profe' => $Professores]);
+        $Profe = Profe::findOrFail($id);
+        $User = User::findOrFail($Profe->user_id);
+        
+        return view('CRUD.create_prof',['Profe' => $Profe, 'User' => $User]);
 }
     public function update($id, Request $request){
         
-    $Professores = Profe::findOrFail ($id);
-    $Professores -> update ($request -> all());
+        $Profe = Profe::findOrFail ($id);
+        
+        $User = User::findOrFail($Profe->user_id);
+        $data = $request->all();
+        $data['password'] = \Hash::make($data['password']);
+        $User -> update ($data);
+        
+        
+        $Profe -> Nome = $User -> name;
+        $Profe -> update ($request->all());
+
     
-    return redirect::to('professores');
+    if (Auth::check() && Auth::user()->admin == 1){
+        return redirect::to('professores');}
+        else{
+        return redirect::to('userinfo');}
 }
     public function cursos($id){
         $Professores = Profe::findOrFail($id);
