@@ -19,7 +19,7 @@ class CursosController extends Controller
        
         $Curso = Cursos::findOrFail($id);
         $Profe = $Curso -> profes -> first();
-        $hasUserJoined = false;
+        $UserJaTem = false;
         $user = auth()->user();
         if($user) {
 
@@ -27,13 +27,26 @@ class CursosController extends Controller
 
             foreach($userCursos as $userCurso) {
                 if($userCurso['id'] == $id) {
-                    $hasUserJoined = true;
+                    $UserJaTem = true;
+                }
+            }
+
+        }
+        $ProfeJaMinis = false;
+        $user = auth()->user()->profe()->first();
+        if($user) {
+
+            $userCursos = $user->CursosAsProfe->toArray();
+
+            foreach($userCursos as $userCurso) {
+                if($userCurso['id'] == $id) {
+                    $ProfeJaMinis = true;
                 }
             }
 
         }
 
-        return view ('cursos.cursos_info',['Curso' => $Curso, 'hasUserJoined' => $hasUserJoined, 'Profe'=> $Profe]);}
+        return view ('cursos.cursos_info',['Curso' => $Curso, 'UserJaTem' => $UserJaTem, 'Profe'=> $Profe, 'ProfeJaMinis'=> $ProfeJaMinis]);}
     public function new(){
 
     return view ('CRUD.create_cursos');
@@ -84,7 +97,7 @@ class CursosController extends Controller
         $curso = Cursos::findOrFail($id);
 
 
-        return redirect()->back()->with('success', 'Você se inscreveu no curso de '.$curso->Nome);   
+        return redirect()->back()->with('success', 'Você se inscreveu no curso de '.$curso->Nome .'!');   
 
     }
 
@@ -115,7 +128,7 @@ class CursosController extends Controller
 
         $curso = Cursos::findOrFail($id);
 
-        return redirect()->back()->with('success', 'Você saiu do curso de '.$curso->Nome);   
+        return redirect()->back()->with('success', 'Você saiu do curso de '.$curso->Nome .'!');   
     }
 
 }

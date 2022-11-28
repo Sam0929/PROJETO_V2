@@ -15,8 +15,8 @@
             <ul class="nav nav-pills">
                 
                 <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Dashboard</a></li>
-            @if (Auth::check() && Auth::user()->admin == 1 or Auth::user()->profe == 1)   
-                <li class="nav-item"><a href="alunos" class="nav-link active">Tabela de Alunos</a></li>
+            @if (Auth::check() && Auth::user()->admin == 1)   
+                <li class="nav-item"><a href="/alunos" class="nav-link active">Tabela de Alunos</a></li>
                 <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
             @endif
                 <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
@@ -35,7 +35,7 @@
                 </div>
                     <div class='card-body'> 
                         @if( Request::is('*/edit'))
-                        @if(Auth::user()->id == $Aluno->user_id OR Auth::user()->admin == 1)
+                        
                             <form action= "{{ url('alunos/update')}}/{{ $Aluno ->id }}" method="POST">
                         @csrf
                                 <div class="mb-3">
@@ -72,9 +72,7 @@
                                 
                                  <button type='submit' class='btn btn-primary'>Atualizar</button>
                             </form>
-                        @else
-                            <h1> Você não tem permissão para editar este aluno </h1>
-                        @endif
+                        
         
                         @else
             <form action= "{{ url('alunos/add')}}" method="POST">

@@ -68,11 +68,18 @@ class AlunosController extends Controller
     }
     
     public function edit ($id) {
-        $Aluno = Aluno::findOrFail($id);
-        $movies = array();
-        $User = User::findOrFail($Aluno->user_id);
         
+        if (Auth::user()->admin == false){
+        $UserPerm = Auth::user()->Aluno->id;}
+        else{
+            $UserPerm = 0;
+        }
 
+        if ($UserPerm == $id || Auth::user()->admin == true){
+            $Aluno = Aluno::findOrFail($id);
+            $User = User::findOrFail($Aluno->user_id);
+            $movies = array();
+            
         for($j=1; $j<7; $j++) {
 
             $api = Http::withoutVerifying()->get('https://www.learn-laravel.cf/movies?page=' . $j);
@@ -88,8 +95,12 @@ class AlunosController extends Controller
             }
         };
     }
-        
-        return view('CRUD.create', ['Aluno' => $Aluno, 'movies' => $movies, 'User' => $User]);
+            return view ('CRUD.create', ['Aluno' => $Aluno, 'movies' => $movies, 'User' => $User]);
+        }
+        else{
+            return redirect::to('userinfo')->with('danger', 'Você não tem permissão para editar esse aluno!');
+        }
+    
 }
     
     public function update($id, Request $request){
