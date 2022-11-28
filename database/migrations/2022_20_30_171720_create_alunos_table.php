@@ -15,13 +15,13 @@ class CreateAlunosTable extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             
-            $table->id();                                                             //BANCO DE DADOS, É NECESSARIO TER UM FORM DE CRIAÇÃO APENAS PARA PROFESSORES E APENAS PARA MATÉRIAS. DEPOIS DE CRIAR O PROFESSOR QUE SERÁ POSSÍVEL CRIAR UMA MATÉRIA, RELACIONANDO PROFESSOR-MATÉRIA.
+            $table->id();                                                             
             $table->timestamps();
-            $table->string("Nome");                                                     //OUTRO FORM É NECESSÁRIO PARA CADASTRAR UM ALUNO E SUAS MATÉRIAS E FILMES, ALÉM DE RA, ID 
-            $table->string("CPF");
+            $table->string("Nome");
+            $table->string("CPF");                                         
             $table->string("Endereço");
             $table->string("Filme");
-            $table->foreignid("user_id")->constrained()->onDelete('cascade');           //FOREIGN KEY
+            $table->foreignid("user_id")->constrained()->onDelete('cascade');       
         });
     }
 
@@ -32,6 +32,8 @@ class CreateAlunosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('alunos', function (Blueprint $table) {
+            $table->dropForeign('alunos_user_id_foreign');
+        });
     }
 };

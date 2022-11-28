@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cursos_user', function (Blueprint $table) {
-            $table->foreignid('cursos_id')->constrained();
-            $table->foreignid('user_id')->constrained();
+            $table->foreignid('cursos_id')->constrained() ->onDelete('cascade');
+            $table->foreignid('user_id')->constrained() ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +27,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cursos_user');
+        Schema::dropIfExists('cursos_user', function (Blueprint $table) {
+            $table->dropForeign('cursos_user_cursos_id_foreign');
+            $table->dropForeign('cursos_user_user_id_foreign');
+        });
     }
 };

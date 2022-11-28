@@ -7,7 +7,7 @@
 <!--Cabeçalho-->
 
 
-<!--Conteúdo-->
+
 <div class='container text-center'>
     <div class='row justify-content-center'>
         <div class='col-md-12'>
@@ -43,6 +43,8 @@
     </div>
 </div>
 @endauth
+
+<!--Conteúdo-->
 <div class='container'>
     <div class='col-md-12'>
         <div class='card'>

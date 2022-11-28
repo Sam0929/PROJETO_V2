@@ -46,16 +46,17 @@ Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete'
 Route::get('/professores/{id}/add', [CursosController::class,'addCurso']) ->middleware('profe');
 Route::get('/professores/{id}/cursos', [ProfessoresController::class,'cursos']) ->middleware('profe');
 
-Route::get('/cursos', [CursosController::class, 'index']);
+Route::get('/cursos', [CursosController::class, 'index'])->middleware('auth');
+Route::get('/cursos/info/{id}', [CursosController::class, 'CursosInfo'])->middleware('auth');
 Route::get('/cursos/novo', [CursosController::class,'new']) ->middleware('admin');
 Route::post('/cursos/add', [CursosController::class,'add']) ->middleware('admin');
 Route::get('/cursos/{id}/edit/', [CursosController::class,'edit']) ->middleware('admin');
 Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middleware('admin');
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
 
-Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('auth');
+Route::post('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('auth');
 
 Route::get('/cursos/aluno', [CursosController::class,'CursosDoAluno']) ->middleware('auth');
 Route::get('/cursos/profe', [CursosController::class,'CursosDoProfe']) ->middleware('profe');
-Route::get('/cursos/{id}/leave', [CursosController::class,'Leave']) ->middleware('auth');
+Route::delete('/cursos/{id}/leave', [CursosController::class,'LeaveCurso']) ->middleware('auth');
 
