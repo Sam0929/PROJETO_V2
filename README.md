@@ -8,7 +8,7 @@
 # Projeto CRUD Laravel
 
 * ## 📁 [Apresentação Projeto WEB]
-Projeto CRUD Laravel Alunos, Professores, Matérias e seus Filmes!
+Projeto CRUD Laravel Controle Escolar!
 
 ### Passo a passo acesso ao projeto
 Clone Repositório criado a partir do template, entre na pasta e execute os comandos abaixo:
@@ -48,9 +48,9 @@ Gerar a key do projeto Laravel
 php artisan key:generate
 ```
 
-Subir as tabelas para o banco de dados
+Subir as tabelas para o banco de dados e os seeds
 ```sh
-php artisan migrate
+php artisan migrate --seed
 ```
 Acesse o projeto
 [http://localhost:8080](http://localhost:8080)

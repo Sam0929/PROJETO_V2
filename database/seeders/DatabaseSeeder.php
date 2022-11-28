@@ -90,8 +90,8 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d'),
             'Nome' => "Cálculo integrado",
             'Tipo' => 'Matematica',
-            'Resumo' =>'Cálculo A,B,C',
-            'Descrição' => '1',
+            'Resumo' =>'Cálculo 1 - Integral',
+            'Descrição' => 'Estudo focado em calcular a area em baixo de curvas',
             'Max' => '100',
             'Min' => '10',
             
@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder
             'Nome' => "Cálculo 1",
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo A',
-            'Descrição' => '1',
+            'Descrição' => 'Estudo focado no Calculo A e suas aplicações',
             'Max' => '100',
             'Min' => '10',
             
@@ -115,7 +115,7 @@ class DatabaseSeeder extends Seeder
             'Nome' => "Cálculo 2",
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo B',
-            'Descrição' => '1',
+            'Descrição' => 'Estudo focado no Calculo B e suas aplicações',
             'Max' => '100',
             'Min' => '10',
             
@@ -127,11 +127,11 @@ class DatabaseSeeder extends Seeder
             'Nome' => "Cálculo 3",
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo C',
-            'Descrição' => '1',
-            'Max' => '2',
-            'Min' => '1',
+            'Descrição' => 'Estudo focado no Calculo C e suas aplicações',
+            'Max' => '100',
+            'Min' => '10',
             
-        
+
         ]);
 
         DB::table('Alunos')->insert([
