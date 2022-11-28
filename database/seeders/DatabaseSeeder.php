@@ -128,8 +128,8 @@ class DatabaseSeeder extends Seeder
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo C',
             'Descrição' => 'Estudo focado no Calculo C e suas aplicações',
-            'Max' => '100',
-            'Min' => '10',
+            'Max' => '2',
+            'Min' => '1',
             
 
         ]);
