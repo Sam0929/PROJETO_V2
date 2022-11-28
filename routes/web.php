@@ -59,4 +59,5 @@ Route::post('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware(
 Route::get('/cursos/aluno', [CursosController::class,'CursosDoAluno']) ->middleware('auth');
 Route::get('/cursos/profe', [CursosController::class,'CursosDoProfe']) ->middleware('profe');
 Route::delete('/cursos/{id}/leave', [CursosController::class,'LeaveCurso']) ->middleware('auth');
+Route::delete('/cursos/{id}/profe/leave', [CursosController::class,'LeaveCursoProfe']) ->middleware('profe');
 

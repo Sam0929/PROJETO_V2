@@ -31,11 +31,17 @@
             <ul class="nav nav-pills">
              
                 <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Dashboard</a></li>
-            @if (Auth::check() && Auth::user()->admin == 1 or Auth::user()->profe == 1)   
-                <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
+            @if (Auth::check() && Auth::user()->admin == 1)   
+                <li class="nav-item"><a href="/alunos" class="nav-link">Tabela de Alunos</a></li>
                 <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
             @endif
                 <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
+            @if (Auth::check() && Auth::user()->client == 1)
+                <li class="nav-item"><a href="/cursos/aluno" class="nav-link">Meus Cursos</a></li>
+            @endif
+            @if (Auth::check() && Auth::user()->profe == 1)
+             <li class="nav-item"><a href="/cursos/profe" class="nav-link">Meus Cursos</a></li>
+            @endif
             </ul>
             
             </div>

@@ -51,11 +51,21 @@ class ProfessoresController extends Controller
     }
 
     public function edit ($id) {
-        $Profe = Profe::findOrFail($id);
-        $User = User::findOrFail($Profe->user_id);
-        
-        return view('CRUD.create_prof',['Profe' => $Profe, 'User' => $User]);
-}
+        if (Auth::user()->admin == false){
+            $UserPerm = Auth::user()->Profe->id;}
+            else{
+                $UserPerm = 0;
+            }
+       
+        if ($UserPerm == $id || Auth::user()->admin == true){
+            $Profe = Profe::findOrFail ($id);
+            $User = User::findOrFail($Profe->user_id);
+            return view ('CRUD.create_prof', ['Profe' => $Profe, 'User' => $User]);
+        }
+        else{
+            return redirect::to('userinfo')->with('danger', 'Você não tem permissão para editar esse professor!');
+        }
+    }
     public function update($id, Request $request){
         
         $Profe = Profe::findOrFail ($id);

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text("Descrição");
             $table->integer("Max");
             $table->integer("Min");
-            $table->foreignid("user_id")->constrained();
+            
         });
     }
 

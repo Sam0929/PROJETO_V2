@@ -15,8 +15,8 @@
             <ul class="nav nav-pills">
                 
                 <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Dashboard</a></li>
-            @if (Auth::check() && Auth::user()->admin == 1 or Auth::user()->profe == 1)   
-                <li class="nav-item"><a href="alunos" class="nav-link active">Tabela de Alunos</a></li>
+            @if (Auth::check() && Auth::user()->admin == 1)   
+                <li class="nav-item"><a href="/alunos" class="nav-link active">Tabela de Alunos</a></li>
                 <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
             @endif
                 <li class="nav-item"><a href="/cursos" class="nav-link">Cursos</a></li>
@@ -35,7 +35,7 @@
                 </div>
                     <div class='card-body'> 
                         @if( Request::is('*/edit'))
-                        @if(Auth::user()->id == $Aluno->user_id OR Auth::user()->admin == 1)
+                        
                             <form action= "{{ url('alunos/update')}}/{{ $Aluno ->id }}" method="POST">
                         @csrf
                                 <div class="mb-3">
@@ -72,9 +72,7 @@
                                 
                                  <button type='submit' class='btn btn-primary'>Atualizar</button>
                             </form>
-                        @else
-                            <h1> Você não tem permissão para editar este aluno </h1>
-                        @endif
+                        
         
                         @else
             <form action= "{{ url('alunos/add')}}" method="POST">
@@ -82,8 +80,8 @@
                         @csrf
                 <div class="row mb-0">
                         <div class="mb-3">   
-                        <label for="name" class="form-label">{{ __('Name') }}</label>
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <label for="name" class="form-label">{{ __('Nome') }}</label>
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nome..">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -93,8 +91,8 @@
                     </div>
             
                     <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            <label for="email" class="form-label">Endereço de email</label>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email..">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -108,8 +106,8 @@
                             
 
                     <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <label for="password" class="form-label">Senha</label>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Senha..">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -117,19 +115,6 @@
                                     </span>
                                 @enderror
                     </div>
-                       
-
-                        
-                           
-
-                    <div class="mb-3">
-                            <label for="password-confirm" class="form-label">Confirm Password</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                     </div>
-                        
-                        
-                        
-                    
                 </div>
 
                             <div class="row mb-0">

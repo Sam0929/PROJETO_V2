@@ -14,11 +14,17 @@
       <ul class="nav nav-pills">
              
              <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Dashboard</a></li>
-         @if (Auth::check() && Auth::user()->admin == 1 or Auth::user()->profe == 1)   
-             <li class="nav-item"><a href="alunos" class="nav-link">Tabela de Alunos</a></li>
+         @if (Auth::check() && Auth::user()->admin == 1)   
+             <li class="nav-item"><a href="/alunos" class="nav-link">Tabela de Alunos</a></li>
              <li class="nav-item"><a href="/professores" class="nav-link">Tabela de Professores</a></li>
          @endif
              <li class="nav-item"><a href="/cursos" class="nav-link active">Cursos</a></li>
+         @if (Auth::check() && Auth::user()->client == 1)
+             <li class="nav-item"><a href="cursos/aluno" class="nav-link">Meus Cursos</a></li>
+         @endif
+         @if (Auth::check() && Auth::user()->profe == 1)
+             <li class="nav-item"><a href="/cursos/profe" class="nav-link">Meus Cursos</a></li>
+            @endif
          </ul>
      
     </header>
@@ -27,13 +33,6 @@
 
 <div class='container'>
     <div class='row justify-content-center'>
-    @if (\Session::has('success'))
-    <div class="alert alert-success">
-        <ul>
-            <li>{!! \Session::get('success') !!}</li>
-        </ul>
-    </div>
-    @endif
         <div class='col-md-12'>
             <div class='card'>
             @if (Auth::check() && Auth::user()->admin == 1)
@@ -114,32 +113,13 @@
                                             <li class="list-group-item">Resumo: {{ $C->Resumo}}.</li>
                                         
                                             </ul>
-                                          
-                                          @if (Auth::check() && Auth::user()->profe == 1)
-                                            
-                                              <form action="/professores/{{ $C->id }}/add" method="POST">
-                                                @csrf
-                                                <div class='text-center position-relative'>
-                                                <a class="text-center position-relative btn btn-primary" href="/professores/{{ $C->id }}/add" onclick="curso.preventDefault();
-                                                  this.closest('form').submit();">Ministrar</a>
-                                              </form>
-                                                </div>
-                                            </div>
-                                              </div>
-                                            
-                                          @else
-                                       
-                                
-                                  
-                                     
-                                        
                                       </div>
                                          <div class='text-center position-relative'>
                                         <a class="btn btn-primary" href="cursos/info/{{$C->id}}">Saber mais</button></a>
                                         </div>
                                         
                                         </div>
-                                        @endif
+                                     
                                       
                                       @endforeach
                        

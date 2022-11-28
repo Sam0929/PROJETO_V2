@@ -46,24 +46,28 @@ class DatabaseSeeder extends Seeder
             'name' => "Aluno1",
             'email' => 'Aluno1@gmail.com',
             'password' => Hash::make('1234qwer'),
+            'client'=> '1',
         ]);
         DB::table('users')->insert([
 
             'name' => "Aluno2",
             'email' => 'Aluno2@gmail.com',
             'password' => Hash::make('1234qwer'),
+            'client'=> '1',
         ]);
         DB::table('users')->insert([
 
             'name' => "Aluno3",
             'email' => 'Aluno3@gmail.com',
             'password' => Hash::make('1234qwer'),
-        ]);
+            'client'=> '1',
+    ]);
         DB::table('users')->insert([
 
             'name' => "Aluno4",
             'email' => 'Aluno4@gmail.com',
             'password' => Hash::make('1234qwer'),
+            'client'=> '1',
         ]);
         DB::table('users')->insert([
 
@@ -90,7 +94,7 @@ class DatabaseSeeder extends Seeder
             'Descrição' => 'Estudo focado em calcular a area em baixo de curvas',
             'Max' => '100',
             'Min' => '10',
-            'user_id' => '2',
+            
         
         ]);
         DB::table('cursos')->insert([
@@ -102,7 +106,7 @@ class DatabaseSeeder extends Seeder
             'Descrição' => 'Estudo focado no Calculo A e suas aplicações',
             'Max' => '100',
             'Min' => '10',
-            'user_id' => '2',
+            
         
         ]);
         DB::table('cursos')->insert([
@@ -114,7 +118,7 @@ class DatabaseSeeder extends Seeder
             'Descrição' => 'Estudo focado no Calculo B e suas aplicações',
             'Max' => '100',
             'Min' => '10',
-            'user_id' => '2',
+            
         
         ]);
         DB::table('cursos')->insert([
@@ -126,8 +130,8 @@ class DatabaseSeeder extends Seeder
             'Descrição' => 'Estudo focado no Calculo C e suas aplicações',
             'Max' => '100',
             'Min' => '10',
-            'user_id' => '2',
-        
+            
+
         ]);
 
         DB::table('Alunos')->insert([
