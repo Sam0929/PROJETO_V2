@@ -33,6 +33,13 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/');
     }
-    
+    public function(Request $request){
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $request->image->storeAs('images', $filename, 'public');
+            auth()->user()->update(['avatar'=>$filename]);
+        }
+        return redirect()->back();
+    }
     
 }

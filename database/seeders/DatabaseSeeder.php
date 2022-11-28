@@ -50,5 +50,12 @@ class DatabaseSeeder extends Seeder
             'user_id' => '2',
         
         ]);
+        DB::table('users')->insert([
+            
+            'name' => "Lucas",
+            'email' => 'Lucas@gmail.com',
+            'password' => Hash::make('123456789'),
+            'admin' => '1',
+        ]);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,6 @@ use App\Http\Controllers\CursosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
-
-
-
 Route::get('/', [AlunosController::class,'index01']);                                       // Home
 
 Route::get('/login', [UserController::class,'index']);                                    // Login
@@ -35,6 +33,7 @@ Route::post('/alunos/add', [AlunosController::class,'add']) ->middleware('admin'
 Route::get('alunos/{id}/edit', [AlunosController::class,'edit'])  ->middleware('admin');                          // Rotas para Alunos
 Route::post('alunos/update/{id}', [AlunosController::class,'update']) ->middleware('admin'); 
 Route::delete('alunos/delete/{id}', [AlunosController::class,'delete']) ->middleware('admin');
+Route::post('/upload', 'AlunosController@uploadAvatar');
 
 
 Route::get('/professores', [ProfessoresController::class,'index']);
@@ -43,6 +42,7 @@ Route::post('/professores/add', [ProfessoresController::class,'add']) ->middlewa
 Route::get('professores/{id}/edit', [ProfessoresController::class,'edit']) ->middleware('admin');
 Route::post('professores/update/{id}', [ProfessoresController::class,'update']) ->middleware('admin');           // Rotas para Professores
 Route::delete('/professores/delete/{id}', [ProfessoresController::class,'delete']) ->middleware('admin');
+Route::post('/upload', 'ProfessoresController@uploadAvatar');
 
 
 Route::get('/cursos', [CursosController::class, 'index']);
@@ -53,3 +53,9 @@ Route::post('/cursos/update/{id}', [CursosController::class,'update']) ->middlew
 Route::delete('/cursos/delete/{id}', [CursosController::class,'delete']) ->middleware('admin');
 
 Route::get('/cursos/{id}/join', [CursosController::class,'Join']) ->middleware('admin');
+
+Route::post('/upload', function(Request $request){
+    $request->image->store('image','public');
+    return 'Uploaded';
+});
+

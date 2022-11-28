@@ -21,6 +21,7 @@ class CreateAlunosTable extends Migration
             $table->string("Endereço");
             $table->string("Filme");
             $table->foreignid("user_id")->constrained();
+            $table->string("Avatar")->nullable();
         });
     }
 
