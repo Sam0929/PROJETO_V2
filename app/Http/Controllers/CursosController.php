@@ -130,5 +130,15 @@ class CursosController extends Controller
 
         return redirect()->back()->with('success', 'Você saiu do curso de '.$curso->Nome .'!');   
     }
+    public function LeaveCursoProfe($id){
+
+        $profe = auth()->user()->profe()->first();
+        $profe->CursosAsProfe()->detach($id);
+
+        $curso = Cursos::findOrFail($id);
+
+        return redirect()->back()->with('success', 'Você não está mais ministrado o curso de'.$curso->Nome .'!');   
+
+    }
 
 }

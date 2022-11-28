@@ -39,6 +39,9 @@
         @endif
         <div class='col-md-12'>
             <div class='card'>
+                    <div class='card-header'>
+                    <a class="btn btn-primary" href="/" role="button">Voltar para página inicial</a>  
+                    </div>
                 <div class='card-body'>
                     <h1 class="text-center fs-2">Cursos que você está matriculado!</h1>
                         <table class="table table-striped table-hover table-bordered ">

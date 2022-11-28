@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
             'Descrição' => '1',
             'Max' => '100',
             'Min' => '10',
-            'user_id' => '2',
+            
         
         ]);
         DB::table('cursos')->insert([
@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
             'Descrição' => '1',
             'Max' => '100',
             'Min' => '10',
-            'user_id' => '2',
+            
         
         ]);
         DB::table('cursos')->insert([
@@ -118,7 +118,7 @@ class DatabaseSeeder extends Seeder
             'Descrição' => '1',
             'Max' => '100',
             'Min' => '10',
-            'user_id' => '2',
+            
         
         ]);
         DB::table('cursos')->insert([
@@ -128,9 +128,9 @@ class DatabaseSeeder extends Seeder
             'Tipo' => 'Matematica',
             'Resumo' =>'Cálculo C',
             'Descrição' => '1',
-            'Max' => '100',
-            'Min' => '10',
-            'user_id' => '2',
+            'Max' => '2',
+            'Min' => '1',
+            
         
         ]);
 

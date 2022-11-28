@@ -72,6 +72,8 @@
                   @if (Auth::user()->profe == 1)
                   
                     <p>Professor: Sim</p>
+                    <p>CPF: {{ Auth::user()->Profe->CPF}}</p>
+                    <p>Endereço: {{ Auth::user()->Profe->Endereço}}</p>
                   <div class = "position-absolute bottom-10">
                     <a class="btn btn-primary" href="professores/{{Auth::user()->Profe->id}}/edit" role="button">Editar</a>
                   </div>

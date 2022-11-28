@@ -39,6 +39,9 @@
             @if (Auth::check() && Auth::user()->client == 1)
                 <li class="nav-item"><a href="/cursos/aluno" class="nav-link">Meus Cursos</a></li>
             @endif
+            @if (Auth::check() && Auth::user()->profe == 1)
+             <li class="nav-item"><a href="/cursos/profe" class="nav-link">Meus Cursos</a></li>
+            @endif
             </ul>
             
             </div>
