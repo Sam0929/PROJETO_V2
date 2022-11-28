@@ -56,9 +56,6 @@ Acesse o projeto
 [http://localhost:8080](http://localhost:8080)
 
 E utilize-o como desejar
-```sh
-Após acessar a home, basta clicar em Tabela de Alunos e Adicionar um Novo Aluno.
-```
 
 Acesse o phpmyadmin
 [http://localhost:8081](http://localhost:8081)
